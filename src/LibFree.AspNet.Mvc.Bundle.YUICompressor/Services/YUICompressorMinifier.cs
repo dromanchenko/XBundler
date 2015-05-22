@@ -1,7 +1,6 @@
-﻿using LibFree.AspNet.Mvc.Bundle.Services;
-using Yahoo.Yui.Compressor;
+﻿using Yahoo.Yui.Compressor;
 
-namespace LibFree.AspNet.Mvc.Bundle.Services.YUICompressor
+namespace LibFree.AspNet.Mvc.Bundle.Services
 {
 	public sealed class YUICompressorMinifier : ICssMinifier
 	{

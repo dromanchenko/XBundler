@@ -29,29 +29,6 @@ namespace LibFree.AspNet.Mvc.Bundle.TagHelpers
 			output.SuppressOutput();
 			var cssTagsContent = await context.GetChildContentAsync();
 			var filePaths = HtmlParser.ParseCssBundle(cssTagsContent.GetContent());
-			/*var htmlDocument = new HtmlAgilityPack.HtmlDocument();
-			htmlDocument.LoadHtml(cssTagsContent.GetContent());
-			var cssNodes = htmlDocument.DocumentNode.SelectNodes("/css");
-			foreach (var cssNode in cssNodes)
-			{
-				var href = cssNode.Attributes["href"];
-				int a = 0;
-			}*/
 		}
-
-		/*private void ReadFileName()
-		{
-			if (_cachedFileName == null)
-			{
-				lock(_cacheFileNameLockObject)
-				{
-					if (_cachedFileName == null)
-					{
-						var revManifest = File.ReadAllText(Path.Combine(HostingEnvironment.WebRootPath, "..\\rev-manifest.json"));
-						var htmlAttributes = JsonConvert.DeserializeObject<Dictionary<string, string>>(revManifest);
-					}
-				}
-			}
-		}*/
 	}
 }

@@ -1,5 +1,4 @@
 ﻿using LibFree.AspNet.Mvc.Bundle.Services;
-using LibFree.AspNet.Mvc.Bundle.Services.YUICompressor;
 using Microsoft.Framework.DependencyInjection;
 
 namespace LibFree.AspNet.Mvc.Bundle.YUICompressor
