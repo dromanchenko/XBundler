@@ -7,7 +7,7 @@
 
   <Import Project="$(VSToolsPath)\DNX\Microsoft.DNX.Props" Condition="'$(VSToolsPath)' != ''" />
   <PropertyGroup Label="Globals">
-    <ProjectGuid>981ac1dd-a08a-4bc1-a3c2-beee7e1be99c</ProjectGuid>
+    <ProjectGuid>1eb392f1-6ae1-4531-b3dc-3430ca6d32bd</ProjectGuid>
     <RootNamespace>LibFree.AspNet.Mvc.Bundle.HtmlAgilityPack</RootNamespace>
     <BaseIntermediateOutputPath Condition="'$(BaseIntermediateOutputPath)'=='' ">..\..\artifacts\obj\$(MSBuildProjectName)</BaseIntermediateOutputPath>
     <OutputPath Condition="'$(OutputPath)'=='' ">..\..\artifacts\bin\$(MSBuildProjectName)\</OutputPath>
