@@ -3,6 +3,14 @@
   "version": -9996,
   "targets": {
     "DNX,Version=v4.5.1": {
+      "EcmaScript.Net/1.0.1.0": {
+        "compile": {
+          "lib/net20/EcmaScript.NET.dll": {}
+        },
+        "runtime": {
+          "lib/net20/EcmaScript.NET.dll": {}
+        }
+      },
       "Microsoft.AspNet.Authentication/1.0.0-beta5-12413": {
         "dependencies": {
           "Microsoft.AspNet.DataProtection": "1.0.0-beta5-11385",
@@ -531,10 +539,30 @@
         "runtime": {
           "lib/net45/Newtonsoft.Json.dll": {}
         }
+      },
+      "YUICompressor.NET/2.7.0.0": {
+        "dependencies": {
+          "EcmaScript.Net": "1.0.1.0"
+        },
+        "compile": {
+          "lib/NET20/Yahoo.Yui.Compressor.dll": {}
+        },
+        "runtime": {
+          "lib/NET20/Yahoo.Yui.Compressor.dll": {}
+        }
       }
     }
   },
   "libraries": {
+    "EcmaScript.Net/1.0.1.0": {
+      "sha512": "6U09fonPEr/ONxkJFZSjv/auSpqvw/IGebcRW+9sr7F82nOaRxfpzmN2wuz7Hy/Tr1wcR/hsbTk1j9JNlzRxHg==",
+      "files": [
+        "EcmaScript.Net.1.0.1.0.nupkg",
+        "EcmaScript.Net.1.0.1.0.nupkg.sha512",
+        "EcmaScript.Net.nuspec",
+        "lib/net20/EcmaScript.NET.dll"
+      ]
+    },
     "Microsoft.AspNet.Authentication/1.0.0-beta5-12413": {
       "serviceable": true,
       "sha512": "d+IBH7/5Ymyz6mF1C3nG0prOJK1WcV8IPqHJ06l2jD4c+OR3og68pH23E8iditPflhCXdykpGpOUr54yCgdZRg==",
@@ -985,12 +1013,24 @@
         "lib/portable-net45+wp80+win8+wpa81+aspnetcore50/Newtonsoft.Json.xml",
         "tools/install.ps1"
       ]
+    },
+    "YUICompressor.NET/2.7.0.0": {
+      "sha512": "G29jACVTLmxXtNcyAxd5MLdKpB+6BYN0gokKRLnm54dRJ/pjuCUTgJhAhqYDdYSttAgAxPt/BjG1dXn+2BKQHw==",
+      "files": [
+        "New BSD License.txt",
+        "readme.txt",
+        "YUICompressor.NET.2.7.0.0.nupkg",
+        "YUICompressor.NET.2.7.0.0.nupkg.sha512",
+        "YUICompressor.NET.nuspec",
+        "lib/NET20/Yahoo.Yui.Compressor.dll"
+      ]
     }
   },
   "projectFileDependencyGroups": {
     "": [
-      "Microsoft.AspNet.Razor.Runtime >= 4.0.0-beta5-11433",
-      "Microsoft.AspNet.Mvc.Core >= 6.0.0-beta5-13890"
+      "Microsoft.Framework.DependencyInjection.Abstractions >= 1.0.0-beta5-11367",
+      "YUICompressor.NET >= 2.7.0.0",
+      "LibFree.AspNet.Mvc.Bundle "
     ],
     "DNX,Version=v4.5.1": []
   }
