@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace LibFree.AspNet.Mvc.Bundle
@@ -12,7 +13,8 @@ namespace LibFree.AspNet.Mvc.Bundle
 
 		protected IEnumerable<string> _filePaths { get; set; }
 
-		public string Content { get; protected set; }
+		private string _content;
+		private SemaphoreSlim _contentSyncLock = new SemaphoreSlim(1);
 
 		internal Bundle(string virtualPath, IEnumerable<string> filePaths)
 		{
@@ -42,9 +44,37 @@ namespace LibFree.AspNet.Mvc.Bundle
 			GenerateVirtualPath();
 		}
 
-		internal virtual async Task BuildAsync()
+		public async Task<string> GetContent()
 		{
-			await Task.Yield();
+			if (_content != null)
+			{
+				return await Task.FromResult(_content);
+			}
+			else
+			{
+				if (_content != null)
+				{
+					return await Task.FromResult(_content);
+				}
+				else
+				{
+					await _contentSyncLock.WaitAsync();
+					try
+					{
+						_content = await BuildContentAsync();
+						return _content;
+					}
+					finally
+					{
+						_contentSyncLock.Release();
+					}
+				}
+			}
+		}
+
+		protected virtual async Task<string> BuildContentAsync()
+		{
+			return await Task.FromResult<string>(null);
 		}
 
 		private void GenerateVirtualPath()

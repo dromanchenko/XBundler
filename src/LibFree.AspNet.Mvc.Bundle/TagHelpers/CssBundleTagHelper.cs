@@ -61,7 +61,6 @@ namespace LibFree.AspNet.Mvc.Bundle.TagHelpers
 						var cssTagsContent = await context.GetChildContentAsync();
 						var filePaths = HtmlParser.ParseCssBundle(cssTagsContent.GetContent());
 						bundle = new CssBundle(VirtualPath, filePaths, CssMinifier, HostingEnvironment);
-						//await bundle.BuildAsync(filePaths);
 						BundleRuntime.Bundles.Add(VirtualPath, bundle);
 					}
 					catch (Exception ex)

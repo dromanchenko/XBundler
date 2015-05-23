@@ -19,7 +19,7 @@ namespace LibFree.AspNet.Mvc.Bundle
 			_hostingEnvironment = hostingEnvironment;
         }
 
-		internal override async Task BuildAsync()
+		protected override async Task<string> BuildContentAsync()
 		{
 			var combinedContent = new StringBuilder();
 			foreach (var filePath in _filePaths)
@@ -41,7 +41,7 @@ namespace LibFree.AspNet.Mvc.Bundle
 				combinedContent.Append(_cssMinifier.Minify(fileContent));
 			}
 
-			Content = combinedContent.ToString();
+			return await Task.FromResult(combinedContent.ToString());
 		}
 	}
 }
