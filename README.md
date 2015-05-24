@@ -10,12 +10,27 @@ In nuget console:
 
 ## Startup.cs
 
-```c#
+```csharp
+
+using LibFree.AspNet.Mvc.Bundle.HtmlAgilityPack;
+using LibFree.AspNet.Mvc.Bundle.Middlewares;
+using LibFree.AspNet.Mvc.Bundle.YUICompressor;
+
+```csharp
 
 public void ConfigureServices(IServiceCollection services)
 {
     ...
 	services.UserYUICompressor();
 	services.UserHtmlAgilityPackParser();
+	...
+}
+
+```csharp
+
+public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+{
+	...
+	app.UseBundle();
 	...
 }
