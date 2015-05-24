@@ -56,6 +56,6 @@ public void Configure(IApplicationBuilder app)
 
 <jsbundle virtualpath="/assets/js/">
 	<script src="/assets/js/jquery-2.1.3.js"></script>
-	<script src="/assets/js/bootstrap.min.js"></script>
+	<script src="/assets/js/bootstrap.js"></script>
 </jsbundle>
 ```
