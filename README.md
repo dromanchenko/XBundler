@@ -15,6 +15,7 @@ In nuget console:
 using LibFree.AspNet.Mvc.Bundle.HtmlAgilityPack;
 using LibFree.AspNet.Mvc.Bundle.Middlewares;
 using LibFree.AspNet.Mvc.Bundle.YUICompressor;
+```
 
 ```csharp
 
@@ -25,6 +26,7 @@ public void ConfigureServices(IServiceCollection services)
 	services.UserHtmlAgilityPackParser();
 	...
 }
+```
 
 ```csharp
 
@@ -34,3 +36,4 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerF
 	app.UseBundle();
 	...
 }
+```
