@@ -6,7 +6,7 @@
   </PropertyGroup>
   <Import Project="$(VSToolsPath)\DNX\Microsoft.DNX.Props" Condition="'$(VSToolsPath)' != ''" />
   <PropertyGroup Label="Globals">
-    <ProjectGuid>c1552c0b-c32f-48a5-b8c2-7345335f078d</ProjectGuid>
+    <ProjectGuid>2d17911d-677b-4154-a162-eed1e09b5dc1</ProjectGuid>
     <RootNamespace>LibFree.AspNet.Mvc.Bundle.YUICompressor</RootNamespace>
     <BaseIntermediateOutputPath Condition="'$(BaseIntermediateOutputPath)'=='' ">..\..\artifacts\obj\$(MSBuildProjectName)</BaseIntermediateOutputPath>
     <OutputPath Condition="'$(OutputPath)'=='' ">..\..\artifacts\bin\$(MSBuildProjectName)\</OutputPath>
