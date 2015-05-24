@@ -30,7 +30,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ```csharp
 
-public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+public void Configure(IApplicationBuilder app)
 {
 	...
 	app.UseBundle();
@@ -41,7 +41,9 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerF
 ### _ViewImports.cshtml
 
 ```
+...
 @addTagHelper "*, LibFree.AspNet.Mvc.Bundle"
+...
 ```
 
 ### Views
