@@ -5,5 +5,6 @@ namespace LibFree.AspNet.Mvc.Bundle.Services
 	public interface IHtmlParser
     {
 		IEnumerable<string> ParseCssBundle(string html);
-    }
+		IEnumerable<string> ParseJsBundle(string html);
+	}
 }

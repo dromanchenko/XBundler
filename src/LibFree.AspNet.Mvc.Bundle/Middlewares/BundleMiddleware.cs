@@ -32,12 +32,14 @@ namespace LibFree.AspNet.Mvc.Bundle.Middlewares
 				_logger.LogVerbose("BundleMiddleware: request path {0} matches one of the bundles", requestPath);
 
 				var bundle = BundleRuntime.Bundles[requestPathWithoutQueryString];
+				string content;
 				if (bundle is CssBundle)
 				{
 					context.Response.ContentType = "text/css";
-					context.Response.Headers["Cache-Control"] = "private, max-age=86400, stale-while-revalidate=604800";
-                    var content = await bundle.GetContent();
-					await context.Response.WriteAsync(content);
+				}
+				else if (bundle is JsBundle)
+				{
+					context.Response.ContentType = "application/x-javascript";
 				}
 				else
 				{
@@ -45,6 +47,10 @@ namespace LibFree.AspNet.Mvc.Bundle.Middlewares
 					_logger.LogError(string.Format("BundleMiddleware: bundle type {0} is not implemented", bundle.GetType().FullName), ex);
 					throw ex;
 				}
+
+				context.Response.Headers["Cache-Control"] = "public, max-age=86400, stale-while-revalidate=604800";
+				content = await bundle.GetContent();
+				await context.Response.WriteAsync(content);
 			}
 			else
 			{

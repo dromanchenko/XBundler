@@ -4,19 +4,19 @@ using System.Collections.Generic;
 
 namespace LibFree.AspNet.Mvc.Bundle
 {
-	internal sealed class CssBundle : Bundle
+	internal sealed class JsBundle : Bundle
     {
-		private ICssMinifier _cssMinifier;
+		private IJsMinifier _jsMinifier;
 
-		public CssBundle(string virtualPath, IEnumerable<string> filePaths, ICssMinifier cssMinifier, IHostingEnvironment hostingEnvironment)
+		public JsBundle(string virtualPath, IEnumerable<string> filePaths, IJsMinifier jsMinifier, IHostingEnvironment hostingEnvironment)
 			: base(virtualPath, filePaths, hostingEnvironment)
 		{
-			_cssMinifier = cssMinifier;
+			_jsMinifier = jsMinifier;
         }
 
 		protected override string Minify(string content)
 		{
-			return _cssMinifier.Minify(content);
+			return _jsMinifier.Minify(content);
         }
 	}
 }

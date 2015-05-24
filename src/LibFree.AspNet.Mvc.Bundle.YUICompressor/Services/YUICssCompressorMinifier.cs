@@ -2,7 +2,7 @@
 
 namespace LibFree.AspNet.Mvc.Bundle.Services
 {
-	public sealed class YUICompressorMinifier : ICssMinifier
+	public sealed class YUICssCompressorMinifier : ICssMinifier
 	{
 		public string Minify(string css)
 		{

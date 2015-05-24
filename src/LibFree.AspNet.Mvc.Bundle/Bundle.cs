@@ -1,6 +1,9 @@
-﻿using System;
+﻿using Microsoft.AspNet.Hosting;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -16,7 +19,9 @@ namespace LibFree.AspNet.Mvc.Bundle
 		private string _content;
 		private SemaphoreSlim _contentSyncLock = new SemaphoreSlim(1);
 
-		internal Bundle(string virtualPath, IEnumerable<string> filePaths)
+		private IHostingEnvironment _hostingEnvironment;
+
+		internal Bundle(string virtualPath, IEnumerable<string> filePaths, IHostingEnvironment hostingEnvironment)
 		{
 			if (virtualPath == null)
 			{
@@ -40,6 +45,7 @@ namespace LibFree.AspNet.Mvc.Bundle
 
 			RequestedVirtualPath = virtualPath;
 			_filePaths = filePaths;
+			_hostingEnvironment = hostingEnvironment;
 
 			GenerateVirtualPath();
 		}
@@ -74,8 +80,30 @@ namespace LibFree.AspNet.Mvc.Bundle
 
 		protected virtual async Task<string> BuildContentAsync()
 		{
-			return await Task.FromResult<string>(null);
+			var combinedContent = new StringBuilder();
+			foreach (var filePath in _filePaths)
+			{
+				var normalizedFilePath = filePath;
+				if (filePath[0] == '/' || filePath[0] == '\\')
+				{
+					normalizedFilePath = filePath.Remove(0, 1);
+				}
+
+				var physicalPath = Path.Combine(_hostingEnvironment.WebRootPath, normalizedFilePath);
+				string fileContent;
+				using (var fileStream = File.OpenRead(physicalPath))
+				using (var streamReader = new StreamReader(fileStream))
+				{
+					fileContent = await streamReader.ReadToEndAsync();
+				}
+
+				combinedContent.Append(Minify(fileContent));
+			}
+
+			return await Task.FromResult(combinedContent.ToString());
 		}
+
+		protected abstract string Minify(string content);
 
 		private void GenerateVirtualPath()
 		{

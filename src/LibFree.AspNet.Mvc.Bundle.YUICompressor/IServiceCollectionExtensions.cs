@@ -7,7 +7,8 @@ namespace LibFree.AspNet.Mvc.Bundle.YUICompressor
     {
 		public static void UserYUICompressor(this IServiceCollection services)
 		{
-			services.AddTransient<ICssMinifier, YUICompressorMinifier>();
+			services.AddSingleton<ICssMinifier, YUICssCompressorMinifier>();
+			services.AddSingleton<IJsMinifier, YUIJsCompressorMinifier>();
 		}
     }
 }
