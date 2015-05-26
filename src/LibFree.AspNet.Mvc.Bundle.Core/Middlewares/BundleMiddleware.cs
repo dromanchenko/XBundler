@@ -47,7 +47,7 @@ namespace LibFree.AspNet.Mvc.Bundle.Core.Middlewares
 					throw ex;
 				}
 
-				context.Response.Headers["Cache-Control"] = "public, max-age=31536000";
+				context.Response.Headers["Cache-Control"] = "public, max-age=31536000, stale-while-revalidate=86400, stale-if-error=259200";
 				content = await bundle.GetContent();
 				await context.Response.WriteAsync(content);
 			}
