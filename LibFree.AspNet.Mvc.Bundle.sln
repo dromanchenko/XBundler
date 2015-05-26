@@ -11,11 +11,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "LibFree.AspNet.Mvc.Bundle", "src\LibFree.AspNet.Mvc.Bundle\LibFree.AspNet.Mvc.Bundle.xproj", "{F54B3C3B-F41A-4EFC-BE82-F94507A552FD}"
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "LibFree.AspNet.Mvc.Bundle.Core", "src\LibFree.AspNet.Mvc.Bundle.Core\LibFree.AspNet.Mvc.Bundle.Core.xproj", "{F54B3C3B-F41A-4EFC-BE82-F94507A552FD}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "LibFree.AspNet.Mvc.Bundle.YUICompressor", "src\LibFree.AspNet.Mvc.Bundle.YUICompressor\LibFree.AspNet.Mvc.Bundle.YUICompressor.xproj", "{2D17911D-677B-4154-A162-EED1E09B5DC1}"
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "LibFree.AspNet.Mvc.Bundle.Compressors.YUICompressor", "src\LibFree.AspNet.Mvc.Bundle.Compressors.YUICompressor\LibFree.AspNet.Mvc.Bundle.Compressors.YUICompressor.xproj", "{2D17911D-677B-4154-A162-EED1E09B5DC1}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "LibFree.AspNet.Mvc.Bundle.HtmlAgilityPack", "src\LibFree.AspNet.Mvc.Bundle.HtmlAgilityPack\LibFree.AspNet.Mvc.Bundle.HtmlAgilityPack.xproj", "{1EB392F1-6AE1-4531-B3DC-3430CA6D32BD}"
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "LibFree.AspNet.Mvc.Bundle.HtmlParsers.HtmlAgilityPack", "src\LibFree.AspNet.Mvc.Bundle.HtmlParsers.HtmlAgilityPack\LibFree.AspNet.Mvc.Bundle.HtmlParsers.HtmlAgilityPack.xproj", "{1EB392F1-6AE1-4531-B3DC-3430CA6D32BD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

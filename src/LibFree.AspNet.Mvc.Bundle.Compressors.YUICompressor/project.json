@@ -1,0 +1,28 @@
+﻿{
+	"version": "1.0.0-beta3",
+	"description": "",
+	"authors": [ "" ],
+	"tags": [ "" ],
+	"projectUrl": "",
+	"licenseUrl": "",
+
+	"dependencies":
+	{
+		"Microsoft.Framework.DependencyInjection.Abstractions": "1.0.0-*",
+		"YUICompressor.NET": "2.7.0.0",
+		"LibFree.AspNet.Mvc.Bundle.Core": ""
+	},
+
+	"frameworks":
+	{
+		"dnx451": { }
+	},
+	"publishExclude":
+	[
+		".nuget"
+	],
+	"exclude":
+	[
+		".nuget"
+	]
+}

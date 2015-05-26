@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>LibFree.AspNet.Mvc.Bundle.Core</id>
+    <version>1.0.0-beta3</version>
+		<title>LibFree.AspNet.Mvc.Bundle.Core</title>
+    <authors>Dmitry Romanchenko</authors>
+    <owners>Dmitry Romanchenko</owners>
+    <licenseUrl>https://github.com/dromanchenko/LibFree.AspNet.Mvc.Bundle/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/dromanchenko/LibFree.AspNet.Mvc.Bundle</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>A library to bundle (minify/concat) css and js for Asp.Net Mvc 6</description>
+    <releaseNotes>Initial Realease.</releaseNotes>
+    <copyright>Copyright 2015</copyright>
+    <dependencies>
+      <group targetFramework="DNX4.5.1">
+        <dependency id="Microsoft.AspNet.Razor.Runtime" version="4.0.0-beta5-11464" />
+        <dependency id="Microsoft.AspNet.Mvc.Core" version="6.0.0-beta5-13962" />
+				<dependency id="Microsoft.Framework.Logging.Abstractions" version="6.0.0-beta5-11388" />
+      </group>
+    </dependencies>
+    <frameworkAssemblies>
+      <frameworkAssembly assemblyName="mscorlib" targetFramework="DNX4.5.1" />
+      <frameworkAssembly assemblyName="System" targetFramework="DNX4.5.1" />
+      <frameworkAssembly assemblyName="System.Core" targetFramework="DNX4.5.1" />
+      <frameworkAssembly assemblyName="Microsoft.CSharp" targetFramework="DNX4.5.1" />
+    </frameworkAssemblies>
+  </metadata>
+</package>

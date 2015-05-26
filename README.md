@@ -4,17 +4,17 @@ A library to bundle (minify/concat) css and js for Asp.Net Mvc 6
 ### Installation
 In nuget console:
 
-    Install-Package LibFree.AspNet.Mvc.Bundle -Pre
-    Install-Package LibFree.AspNet.Mvc.Bundle.HtmlAgilityPack -Pre
-    Install-Package LibFree.AspNet.Mvc.Bundle.YUICompressor -Pre
+    Install-Package LibFree.AspNet.Mvc.Bundle.Core -Pre
+    Install-Package LibFree.AspNet.Mvc.Bundle.HtmlParsers.HtmlAgilityPack -Pre
+    Install-Package LibFree.AspNet.Mvc.Bundle.Compressors.YUICompressor -Pre
 
 ### Startup.cs
 
 ```csharp
 
-using LibFree.AspNet.Mvc.Bundle.HtmlAgilityPack;
-using LibFree.AspNet.Mvc.Bundle.Middlewares;
-using LibFree.AspNet.Mvc.Bundle.YUICompressor;
+using LibFree.AspNet.Mvc.Bundle.HtmlParsers;
+using LibFree.AspNet.Mvc.Bundle.Core.Middlewares;
+using LibFree.AspNet.Mvc.Bundle.Compressors;
 ```
 
 ```csharp
@@ -42,7 +42,7 @@ public void Configure(IApplicationBuilder app)
 
 ```
 ...
-@addTagHelper "*, LibFree.AspNet.Mvc.Bundle"
+@addTagHelper "*, LibFree.AspNet.Mvc.Bundle.Core"
 ...
 ```
 
