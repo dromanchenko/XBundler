@@ -1,22 +1,24 @@
 ﻿using LibFree.AspNet.Mvc.Bundle.Core.Abstractions;
-using LibFree.AspNet.Mvc.Bundle.Core.Bundles;
-using Microsoft.AspNet.Mvc;
 using Microsoft.AspNet.Razor.Runtime.TagHelpers;
 using Microsoft.Framework.Logging;
-using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace LibFree.AspNet.Mvc.Bundle.Core.TagHelpers
 {
 	[TargetElement("jsbundle")]
-	public class JsBundleTagHelper : BundleTagHelper
+	internal sealed class JsBundleTagHelper : BundleTagHelper
 	{
-		[Activate]
-		[HtmlAttributeNotBound]
-		public IJsMinifier JsMinifier { get; set; }
+		private IHtmlParser _htmlParser;
 
-		protected override ILogger GetLogger()
+		public JsBundleTagHelper(IHtmlParser htmlParser, ILoggerFactory loggerFactory, IBundleRuntime bundleRuntime)
+			: base(loggerFactory, bundleRuntime)
 		{
-			return LoggerFactory.CreateLogger<JsBundleTagHelper>();
+			_htmlParser = htmlParser;
+		}
+
+		protected override ILogger GetLogger(ILoggerFactory loggerFactory)
+		{
+			return loggerFactory.CreateLogger<JsBundleTagHelper>();
 		}
 
 		protected override string GetLoggerMessagesPrefix()
@@ -24,16 +26,19 @@ namespace LibFree.AspNet.Mvc.Bundle.Core.TagHelpers
 			return "JsBundleTagHelper";
 		}
 
-		internal override async Task<Bundles.Bundle> CreateBundle(TagHelperContext context)
+		protected override IEnumerable<string> ParseHtml(string content)
 		{
-			var jsTagsContent = await context.GetChildContentAsync();
-			var filePaths = HtmlParser.ParseJsBundle(jsTagsContent.GetContent());
-			return new JsBundle(VirtualPath, filePaths, JsMinifier, HostingEnvironment);
+			return _htmlParser.ParseJsBundle(content);
 		}
 
-		internal override void SetContent(TagHelperOutput output, Bundles.Bundle bundle)
+		protected override void SetContent(TagHelperOutput output, Bundles.Bundle bundle)
 		{
 			output.Content.SetContent(string.Format("<script src='{0}'></script>", bundle.GeneratedVirtualPath));
         }
+
+		protected override BundleType GetBundleType()
+		{
+			return BundleType.Js;
+		}
 	}
 }

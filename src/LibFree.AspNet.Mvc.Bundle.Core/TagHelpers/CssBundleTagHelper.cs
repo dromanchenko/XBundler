@@ -1,22 +1,24 @@
 ﻿using LibFree.AspNet.Mvc.Bundle.Core.Abstractions;
-using LibFree.AspNet.Mvc.Bundle.Core.Bundles;
-using Microsoft.AspNet.Mvc;
 using Microsoft.AspNet.Razor.Runtime.TagHelpers;
 using Microsoft.Framework.Logging;
-using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace LibFree.AspNet.Mvc.Bundle.Core.TagHelpers
 {
 	[TargetElement("cssbundle")]
-	public class CssBundleTagHelper : BundleTagHelper
+	internal sealed class CssBundleTagHelper : BundleTagHelper
 	{
-		[Activate]
-		[HtmlAttributeNotBound]
-		public ICssMinifier CssMinifier { get; set; }
+		private IHtmlParser _htmlParser;
 
-		protected override ILogger GetLogger()
+		public CssBundleTagHelper(IHtmlParser htmlParser, ILoggerFactory loggerFactory, IBundleRuntime bundleRuntime)
+			: base(loggerFactory, bundleRuntime)
 		{
-			return LoggerFactory.CreateLogger<CssBundleTagHelper>();
+			_htmlParser = htmlParser;
+		}
+
+		protected override ILogger GetLogger(ILoggerFactory loggerFactory)
+		{
+			return loggerFactory.CreateLogger<CssBundleTagHelper>();
 		}
 
 		protected override string GetLoggerMessagesPrefix()
@@ -24,16 +26,19 @@ namespace LibFree.AspNet.Mvc.Bundle.Core.TagHelpers
 			return "CssBundleTagHelper";
 		}
 
-		internal override async Task<Bundles.Bundle> CreateBundle(TagHelperContext context)
+		protected override IEnumerable<string> ParseHtml(string content)
 		{
-			var cssTagsContent = await context.GetChildContentAsync();
-			var filePaths = HtmlParser.ParseCssBundle(cssTagsContent.GetContent());
-			return new CssBundle(VirtualPath, filePaths, CssMinifier, HostingEnvironment);
+			return _htmlParser.ParseCssBundle(content);
 		}
 
-		internal override void SetContent(TagHelperOutput output, Bundles.Bundle bundle)
+		protected override void SetContent(TagHelperOutput output, Bundles.Bundle bundle)
 		{
 			output.Content.SetContent(string.Format("<link href='{0}' rel='stylesheet' type='text/css'/>", bundle.GeneratedVirtualPath));
+		}
+
+		protected override BundleType GetBundleType()
+		{
+			return BundleType.Css;
 		}
 	}
 }

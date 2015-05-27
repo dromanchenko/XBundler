@@ -22,8 +22,8 @@ using LibFree.AspNet.Mvc.Bundle.Compressors;
 public void ConfigureServices(IServiceCollection services)
 {
     ...
-	services.UserYUICompressor();
-	services.UserHtmlAgilityPackParser();
+	services.UseYUICompressor();
+	services.UseHtmlAgilityPackParser();
 	...
 }
 ```

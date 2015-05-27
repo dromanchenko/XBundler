@@ -1,50 +1,43 @@
 ﻿using LibFree.AspNet.Mvc.Bundle.Core.Abstractions;
-using Microsoft.AspNet.Hosting;
-using Microsoft.AspNet.Mvc;
 using Microsoft.AspNet.Razor.Runtime.TagHelpers;
 using Microsoft.Framework.Logging;
-using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace LibFree.AspNet.Mvc.Bundle.Core.TagHelpers
 {
-	public abstract class BundleTagHelper : TagHelper
+	internal abstract class BundleTagHelper : TagHelper
 	{
-		[Activate]
-		[HtmlAttributeNotBound]
-
-		public IHostingEnvironment HostingEnvironment { get; set; }
-
-		[Activate]
-		[HtmlAttributeNotBound]
-		public ILoggerFactory LoggerFactory { get; set; }
-
-		[Activate]
-		[HtmlAttributeNotBound]
-		public IHtmlParser HtmlParser { get; set; }
+		private ILoggerFactory _loggerFactory;
+		private IBundleRuntime _bundleRuntime;
 
 		[HtmlAttributeName("virtualPath")]
 		public string VirtualPath { get; set; }
 
-		protected abstract ILogger GetLogger();
-		protected abstract string GetLoggerMessagesPrefix();
-		internal virtual async Task<Bundles.Bundle> CreateBundle(TagHelperContext context)
+		public BundleTagHelper(ILoggerFactory loggerFactory, IBundleRuntime bundleRuntime)
 		{
-			return await Task.FromResult<Bundles.Bundle>(null);
-		}
+			_loggerFactory = loggerFactory;
+			_bundleRuntime = bundleRuntime;
+        }
 
-		internal abstract void SetContent(TagHelperOutput output, Bundles.Bundle bundle);
+		protected abstract ILogger GetLogger(ILoggerFactory loggerFactory);
+		protected abstract string GetLoggerMessagesPrefix();
+		protected abstract IEnumerable<string> ParseHtml(string content);
+		protected abstract void SetContent(TagHelperOutput output, Bundles.Bundle bundle);
+		protected abstract BundleType GetBundleType();
 
 		public override async Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
 		{
-			var logger = GetLogger();
+			var logger = GetLogger(_loggerFactory);
 			var loggerMessagesPrefix = GetLoggerMessagesPrefix();
 			logger.LogVerbose("{0}: running", loggerMessagesPrefix);
 
 			output.SuppressOutput();
 
-			Bundles.Bundle bundle;
-			if (BundleRuntime.Bundles.ContainsKey(VirtualPath))
+			var bundleType = GetBundleType();
+			var childContent = await context.GetChildContentAsync();
+			var bundle = _bundleRuntime.GetOrCreateBundle(bundleType, VirtualPath, ParseHtml(childContent.GetContent()), loggerMessagesPrefix);
+			/*if (BundleRuntime.Bundles.ContainsKey(VirtualPath))
 			{
 				logger.LogVerbose("{0}: 1st round check - bundle {1} already exists. Using it", loggerMessagesPrefix, VirtualPath);
 				bundle = BundleRuntime.Bundles[VirtualPath];
@@ -76,7 +69,7 @@ namespace LibFree.AspNet.Mvc.Bundle.Core.TagHelpers
 						BundleRuntime.BundlesSyncLock.Release();
 					}
 				}
-			}
+			}*/
 
 			SetContent(output, bundle);
 		}

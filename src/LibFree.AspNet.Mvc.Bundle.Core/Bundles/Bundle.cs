@@ -54,13 +54,13 @@ namespace LibFree.AspNet.Mvc.Bundle.Core.Bundles
 		{
 			if (_content != null)
 			{
-				return await Task.FromResult(_content);
+				return _content;
 			}
 			else
 			{
 				if (_content != null)
 				{
-					return await Task.FromResult(_content);
+					return _content;
 				}
 				else
 				{
@@ -100,7 +100,7 @@ namespace LibFree.AspNet.Mvc.Bundle.Core.Bundles
 				combinedContent.Append(Minify(fileContent));
 			}
 
-			return await Task.FromResult(combinedContent.ToString());
+			return combinedContent.ToString();
 		}
 
 		protected abstract string Minify(string content);

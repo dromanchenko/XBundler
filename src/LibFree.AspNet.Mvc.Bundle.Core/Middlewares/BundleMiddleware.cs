@@ -1,4 +1,5 @@
-﻿using LibFree.AspNet.Mvc.Bundle.Core.Bundles;
+﻿using LibFree.AspNet.Mvc.Bundle.Core.Abstractions;
+using LibFree.AspNet.Mvc.Bundle.Core.Bundles;
 using Microsoft.AspNet.Builder;
 using Microsoft.AspNet.Http;
 using Microsoft.Framework.Logging;
@@ -7,15 +8,17 @@ using System.Threading.Tasks;
 
 namespace LibFree.AspNet.Mvc.Bundle.Core.Middlewares
 {
-	public sealed class BundleMiddleware
+	internal sealed class BundleMiddleware
     {
 		private readonly RequestDelegate _next;
 		private ILogger _logger;
+		private IBundleRuntime _bundleRuntime;
 
-		public BundleMiddleware(RequestDelegate next, ILoggerFactory loggerFactory)
+		public BundleMiddleware(RequestDelegate next, ILoggerFactory loggerFactory, IBundleRuntime bundleRuntime)
 		{
 			_next = next;
 			_logger = loggerFactory.CreateLogger<BundleMiddleware>();
+			_bundleRuntime = bundleRuntime;
 		}
 
 		public async Task Invoke(HttpContext context)
@@ -26,11 +29,11 @@ namespace LibFree.AspNet.Mvc.Bundle.Core.Middlewares
 			var requestPathWithoutQueryString = requestPath.Contains("?")
 				? requestPath.Remove(requestPath.IndexOf('?'))
 				: requestPath;
-			if (BundleRuntime.Bundles.ContainsKey(requestPathWithoutQueryString))
+			if (_bundleRuntime.Bundles.ContainsKey(requestPathWithoutQueryString))
 			{
 				_logger.LogVerbose("BundleMiddleware: request path {0} matches one of the bundles", requestPath);
 
-				var bundle = BundleRuntime.Bundles[requestPathWithoutQueryString];
+				var bundle = _bundleRuntime.Bundles[requestPathWithoutQueryString];
 				string content;
 				if (bundle is CssBundle)
 				{
