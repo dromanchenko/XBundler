@@ -9,10 +9,10 @@ using System.Threading.Tasks;
 
 namespace LibFree.AspNet.Mvc.Bundle.Core.Bundles
 {
-	internal abstract class Bundle
+	public abstract class Bundle
 	{
-		internal string RequestedVirtualPath { get; private set; }
-		internal string GeneratedVirtualPath { get; private set; }
+		public string RequestedVirtualPath { get; private set; }
+		public string GeneratedVirtualPath { get; private set; }
 
 		protected IEnumerable<string> _filePaths { get; set; }
 

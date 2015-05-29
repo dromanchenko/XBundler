@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LibFree.AspNet.Mvc.Bundle.Core.TagHelpers
 {
-	internal abstract class BundleTagHelper : TagHelper
+	public abstract class BundleTagHelper : TagHelper
 	{
 		private ILoggerFactory _loggerFactory;
 		private IBundleRuntime _bundleRuntime;

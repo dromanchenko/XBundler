@@ -6,7 +6,7 @@ using System.Collections.Generic;
 namespace LibFree.AspNet.Mvc.Bundle.Core.TagHelpers
 {
 	[TargetElement("jsbundle")]
-	internal sealed class JsBundleTagHelper : BundleTagHelper
+	public sealed class JsBundleTagHelper : BundleTagHelper
 	{
 		private IHtmlParser _htmlParser;
 

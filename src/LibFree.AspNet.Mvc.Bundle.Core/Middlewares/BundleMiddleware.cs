@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace LibFree.AspNet.Mvc.Bundle.Core.Middlewares
 {
-	internal sealed class BundleMiddleware
+	public sealed class BundleMiddleware
     {
 		private readonly RequestDelegate _next;
 		private ILogger _logger;

@@ -4,11 +4,11 @@ using System.Collections.Generic;
 
 namespace LibFree.AspNet.Mvc.Bundle.Core.Bundles
 {
-	internal sealed class CssBundle : Bundle
+	public sealed class CssBundle : Bundle
     {
 		private ICssMinifier _cssMinifier;
 
-		public CssBundle(string virtualPath, IEnumerable<string> filePaths, ICssMinifier cssMinifier, IHostingEnvironment hostingEnvironment)
+		internal CssBundle(string virtualPath, IEnumerable<string> filePaths, ICssMinifier cssMinifier, IHostingEnvironment hostingEnvironment)
 			: base(virtualPath, filePaths, hostingEnvironment)
 		{
 			_cssMinifier = cssMinifier;

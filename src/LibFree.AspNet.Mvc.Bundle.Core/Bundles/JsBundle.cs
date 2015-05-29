@@ -4,11 +4,11 @@ using System.Collections.Generic;
 
 namespace LibFree.AspNet.Mvc.Bundle.Core.Bundles
 {
-	internal sealed class JsBundle : Bundle
+	public sealed class JsBundle : Bundle
     {
 		private IJsMinifier _jsMinifier;
 
-		public JsBundle(string virtualPath, IEnumerable<string> filePaths, IJsMinifier jsMinifier, IHostingEnvironment hostingEnvironment)
+		internal JsBundle(string virtualPath, IEnumerable<string> filePaths, IJsMinifier jsMinifier, IHostingEnvironment hostingEnvironment)
 			: base(virtualPath, filePaths, hostingEnvironment)
 		{
 			_jsMinifier = jsMinifier;

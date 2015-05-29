@@ -25,11 +25,11 @@ namespace LibFree.AspNet.Mvc.Bundle.Core
 		private ICssMinifier _cssMinifier;
 		private IJsMinifier _jsMinifier;
 
-		internal BundleRuntime(ILogger logger, IHostingEnvironment hostingEnvironment, ICssMinifier cssMinifier, IJsMinifier jsMinifier)
+		public BundleRuntime(ILoggerFactory loggerFactory, IHostingEnvironment hostingEnvironment, ICssMinifier cssMinifier, IJsMinifier jsMinifier)
 		{
 			_bundles = new Dictionary<string, Bundles.Bundle>();
 			_bundleReadOnly = new ReadOnlyDictionary<string, Bundles.Bundle>(_bundles);
-			_logger = logger;
+			_logger = loggerFactory.CreateLogger<BundleRuntime>();
 			_hostingEnvironment = hostingEnvironment;
 			_cssMinifier = cssMinifier;
 			_jsMinifier = jsMinifier;
