@@ -16,7 +16,7 @@
       <group targetFramework="DNX4.5.1">
 				<dependency id="Microsoft.Framework.Logging.Abstractions" version="1.0.0-beta6-11435" />
 				<dependency id="HtmlAgilityPack" version="1.4.9" />
-				<dependency id="LibFree.AspNet.Mvc.Bundle.COre" version="1.0.0-beta4" />
+				<dependency id="LibFree.AspNet.Mvc.Bundle.Core" version="1.0.0-beta4" />
       </group>
     </dependencies>
     <frameworkAssemblies>
