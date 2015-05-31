@@ -35,7 +35,7 @@ namespace LibFree.AspNet.Mvc.Bundle.Core
 			_jsMinifier = jsMinifier;
         }
 
-		public Bundles.Bundle GetOrCreateBundle(BundleType bundleType, string virtualPath, IEnumerable<string> filePaths, string loggerMessagesPrefix)
+		public Bundles.Bundle CreateBundle(BundleType bundleType, string virtualPath, IEnumerable<string> filePaths, string loggerMessagesPrefix)
 		{
 			Bundles.Bundle bundle;
 			if (_bundles.ContainsKey(virtualPath))

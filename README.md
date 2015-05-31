@@ -12,9 +12,10 @@ In nuget console:
 
 ```csharp
 
-using LibFree.AspNet.Mvc.Bundle.HtmlParsers;
-using LibFree.AspNet.Mvc.Bundle.Core.Middlewares;
 using LibFree.AspNet.Mvc.Bundle.Compressors;
+using LibFree.AspNet.Mvc.Bundle.Core;
+using LibFree.AspNet.Mvc.Bundle.Core.Middlewares;
+using LibFree.AspNet.Mvc.Bundle.HtmlParsers;
 ```
 
 ```csharp
@@ -22,7 +23,8 @@ using LibFree.AspNet.Mvc.Bundle.Compressors;
 public void ConfigureServices(IServiceCollection services)
 {
     ...
-	services.UseYUICompressor();
+	services.UseBundle();
+    services.UseYUICompressor();
 	services.UseHtmlAgilityPackParser();
 	...
 }
@@ -34,6 +36,24 @@ public void Configure(IApplicationBuilder app)
 {
 	...
 	app.UseBundle();
+	...
+}
+```
+
+if you want to use a bundle in multiple views you can confgiire it like followed:
+
+```csharp
+
+public void Configure(IApplicationBuilder app)
+{
+	...
+	app.UseBundle()
+		.AddCssBundle(new BundleDesc("/assets/css/")
+			.AddFile("/assets/css/bootstrap.css")
+			.AddFile("/assets/css/main.css"))
+		.AddJsBundle(new BundleDesc("/assets/js/")
+			.AddFile("/assets/js/jquery-2.1.3.js")
+			.AddFile("/assets/js/bootstrap.js"));
 	...
 }
 ```
@@ -59,3 +79,12 @@ public void Configure(IApplicationBuilder app)
 	<script src="/assets/js/bootstrap.js"></script>
 </jsbundle>
 ```
+
+or just
+
+```html
+<cssbundle virtualpath="/assets/css/" />
+<jsbundle virtualpath="/assets/js/" />
+```
+
+if you have configured the bundles in Startup.cs

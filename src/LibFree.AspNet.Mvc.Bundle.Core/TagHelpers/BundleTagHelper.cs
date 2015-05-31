@@ -34,42 +34,17 @@ namespace LibFree.AspNet.Mvc.Bundle.Core.TagHelpers
 
 			output.SuppressOutput();
 
-			var bundleType = GetBundleType();
-			var childContent = await context.GetChildContentAsync();
-			var bundle = _bundleRuntime.GetOrCreateBundle(bundleType, VirtualPath, ParseHtml(childContent.GetContent()), loggerMessagesPrefix);
-			/*if (BundleRuntime.Bundles.ContainsKey(VirtualPath))
+			Bundles.Bundle bundle;
+			if (_bundleRuntime.Bundles.ContainsKey(VirtualPath))
 			{
-				logger.LogVerbose("{0}: 1st round check - bundle {1} already exists. Using it", loggerMessagesPrefix, VirtualPath);
-				bundle = BundleRuntime.Bundles[VirtualPath];
+				bundle = _bundleRuntime.Bundles[VirtualPath];
 			}
 			else
 			{
-				await BundleRuntime.BundlesSyncLock.WaitAsync();
-				if (BundleRuntime.Bundles.ContainsKey(VirtualPath))
-				{
-					logger.LogVerbose("{0}: 2nd round check - bundle {1} already exists. Using it", loggerMessagesPrefix, VirtualPath);
-					bundle = BundleRuntime.Bundles[VirtualPath];
-				}
-				else
-				{
-					try
-					{
-						logger.LogVerbose("{0}: bundle {1} doesn't exist. Creating it", loggerMessagesPrefix, VirtualPath);
-						bundle = await CreateBundle(context);
-						BundleRuntime.Bundles.Add(VirtualPath, bundle);
-					}
-					catch (Exception ex)
-					{
-						logger.LogError(string.Format("{0}: exception is thrown while creating bundle {1}", loggerMessagesPrefix, VirtualPath),
-							ex);
-						throw;
-					}
-					finally
-					{
-						BundleRuntime.BundlesSyncLock.Release();
-					}
-				}
-			}*/
+				var bundleType = GetBundleType();
+				var childContent = await context.GetChildContentAsync();
+				bundle = _bundleRuntime.CreateBundle(bundleType, VirtualPath, ParseHtml(childContent.GetContent()), loggerMessagesPrefix);
+			}
 
 			SetContent(output, bundle);
 		}
