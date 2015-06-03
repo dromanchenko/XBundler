@@ -10,6 +10,9 @@ namespace LibFree.AspNet.Mvc.Bundle.Core.TagHelpers
 	{
 		private IHtmlParser _htmlParser;
 
+		private static string _linkCache;
+		private static readonly object _linkCacheLockObject = new object();
+
 		public CssBundleTagHelper(IHtmlParser htmlParser, ILoggerFactory loggerFactory, IBundleRuntime bundleRuntime)
 			: base(loggerFactory, bundleRuntime)
 		{
@@ -33,7 +36,28 @@ namespace LibFree.AspNet.Mvc.Bundle.Core.TagHelpers
 
 		protected override void SetContent(TagHelperOutput output, Bundles.Bundle bundle)
 		{
-			output.Content.SetContent(string.Format("<link href='{0}' rel='stylesheet' type='text/css'/>", bundle.GeneratedVirtualPath));
+			string link;
+			if (_linkCache != null)
+			{
+				link = _linkCache;
+			}
+			else
+			{
+				lock (_linkCacheLockObject)
+				{
+					if (_linkCache != null)
+					{
+						link = _linkCache;
+					}
+					else
+					{
+						_linkCache = string.Format("<link href='{0}' rel='stylesheet' type='text/css'/>", bundle.GeneratedVirtualPath);
+						link = _linkCache;
+					}
+				}
+			}
+
+			output.Content.SetContent(link);
 		}
 
 		protected override BundleType GetBundleType()
