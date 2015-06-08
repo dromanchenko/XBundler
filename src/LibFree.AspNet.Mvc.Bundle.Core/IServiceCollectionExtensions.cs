@@ -5,7 +5,7 @@ namespace LibFree.AspNet.Mvc.Bundle.Core
 {
 	public static class IServiceCollectionExtensions
     {
-		public static void UseBundle(this IServiceCollection services)
+		public static void AddBundle(this IServiceCollection services)
 		{
 			services.AddSingleton<IBundleRuntime, BundleRuntime>();
 		}
