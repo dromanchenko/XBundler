@@ -14,9 +14,9 @@ namespace LibFree.AspNet.Mvc.Bundle.Core.Bundles
 			_jsMinifier = jsMinifier;
         }
 
-		protected override string Minify(string content)
+		protected override string Minify(string filePath, string content)
 		{
-			return _jsMinifier.Minify(content);
+			return filePath.EndsWith(".min.js") ? content : _jsMinifier.Minify(content);
         }
 	}
 }

@@ -97,13 +97,13 @@ namespace LibFree.AspNet.Mvc.Bundle.Core.Bundles
 					fileContent = await streamReader.ReadToEndAsync();
 				}
 
-				combinedContent.Append(Minify(fileContent));
+				combinedContent.Append(Minify(normalizedFilePath, fileContent));
 			}
 
 			return combinedContent.ToString();
 		}
 
-		protected abstract string Minify(string content);
+		protected abstract string Minify(string filePath, string content);
 
 		private void GenerateVirtualPath()
 		{

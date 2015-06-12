@@ -11,7 +11,7 @@ namespace LibFree.AspNet.Mvc.Bundle.HtmlParsers
 		{
 			var htmlDocument = new HtmlDocument();
 			htmlDocument.LoadHtml(html);
-			var cssNodes = htmlDocument.DocumentNode.SelectNodes("/css");
+			var cssNodes = htmlDocument.DocumentNode.SelectNodes("//css");
 			return cssNodes.Select(n => n.Attributes["href"].Value).ToArray();
 		}
 
@@ -19,7 +19,7 @@ namespace LibFree.AspNet.Mvc.Bundle.HtmlParsers
 		{
 			var htmlDocument = new HtmlDocument();
 			htmlDocument.LoadHtml(html);
-			var jsNodes = htmlDocument.DocumentNode.SelectNodes("/script");
+			var jsNodes = htmlDocument.DocumentNode.SelectNodes("//script");
 			return jsNodes.Select(n => n.Attributes["src"].Value).ToArray();
 		}
 	}
