@@ -23,9 +23,9 @@ using LibFree.AspNet.Mvc.Bundle.HtmlParsers;
 public void ConfigureServices(IServiceCollection services)
 {
     ...
-	services.UseBundle();
-    services.UseYUICompressor();
-	services.UseHtmlAgilityPackParser();
+	services.AddBundle();
+    services.AddYUICompressor();
+	services.AddHtmlAgilityPackParser();
 	...
 }
 ```
