@@ -35,7 +35,13 @@ namespace LibFree.AspNet.Mvc.Bundle.Core
 			_jsMinifier = jsMinifier;
         }
 
-		public Bundles.Bundle CreateBundle(BundleType bundleType, string virtualPath, IEnumerable<string> filePaths, string loggerMessagesPrefix)
+		public Bundles.Bundle CreateBundle(BundleType bundleType, string virtualPath, string targetEnvironments, IEnumerable<string> filePaths, string loggerMessagesPrefix)
+		{
+			var targetEnvironmentsParsed = targetEnvironments != null ? targetEnvironments.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries) : null;
+			return CreateBundle(bundleType, virtualPath, targetEnvironmentsParsed, filePaths, loggerMessagesPrefix);
+		}
+
+		public Bundles.Bundle CreateBundle(BundleType bundleType, string virtualPath, IEnumerable<string> targetEnvironments, IEnumerable<string> filePaths, string loggerMessagesPrefix)
 		{
 			Bundles.Bundle bundle;
 			if (_bundles.ContainsKey(virtualPath))
@@ -57,7 +63,7 @@ namespace LibFree.AspNet.Mvc.Bundle.Core
 						try
 						{
 							_logger.LogVerbose("{0}: bundle {1} doesn't exist. Creating it", loggerMessagesPrefix, virtualPath);
-							bundle = CreateBundle(bundleType, virtualPath, filePaths);
+							bundle = CreateBundle(bundleType, virtualPath, targetEnvironments, filePaths);
 							_bundles.Add(virtualPath, bundle);
 						}
 						catch (Exception ex)
@@ -73,17 +79,17 @@ namespace LibFree.AspNet.Mvc.Bundle.Core
 			return bundle;
 		}
 
-		private Bundles.Bundle CreateBundle(BundleType bundleType, string virtualPath, IEnumerable<string> filePaths)
+		private Bundles.Bundle CreateBundle(BundleType bundleType, string virtualPath, IEnumerable<string> targetEnvironments, IEnumerable<string> filePaths)
 		{
 			Bundles.Bundle bundle = null;
 
 			switch (bundleType)
 			{
 				case BundleType.Css:
-					bundle = new CssBundle(virtualPath, filePaths, _cssMinifier, _hostingEnvironment);
+					bundle = new CssBundle(virtualPath, filePaths, _cssMinifier, _hostingEnvironment, targetEnvironments);
 					break;
 				case BundleType.Js:
-					bundle = new JsBundle(virtualPath, filePaths, _jsMinifier, _hostingEnvironment);
+					bundle = new JsBundle(virtualPath, filePaths, _jsMinifier, _hostingEnvironment, targetEnvironments);
 					break;
 				default:
 					throw new NotImplementedException();

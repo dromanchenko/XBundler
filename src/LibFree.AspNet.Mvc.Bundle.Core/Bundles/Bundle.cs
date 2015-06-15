@@ -11,17 +11,31 @@ namespace LibFree.AspNet.Mvc.Bundle.Core.Bundles
 {
 	public abstract class Bundle
 	{
-		public string RequestedVirtualPath { get; private set; }
-		public string GeneratedVirtualPath { get; private set; }
+		private string _requestedVirtualPath;
+		private string _generatedVirtualPath;
 
-		protected IEnumerable<string> _filePaths { get; set; }
+		private IEnumerable<string> _filePaths { get; set; }
 
 		private string _content;
 		private SemaphoreSlim _contentSyncLock = new SemaphoreSlim(1);
 
-		private IHostingEnvironment _hostingEnvironment;
+		private string _linkCache;
+		private readonly object _linkCacheLockObject = new object();
 
-		internal Bundle(string virtualPath, IEnumerable<string> filePaths, IHostingEnvironment hostingEnvironment)
+		private IHostingEnvironment _hostingEnvironment;
+		private IEnumerable<string> _targetEnvironments;
+
+		internal bool ShouldBundle
+		{
+			get
+			{
+				return _targetEnvironments == null
+					|| !_targetEnvironments.Any()
+					|| _targetEnvironments.Contains(_hostingEnvironment.EnvironmentName);
+			}
+		}
+
+		internal Bundle(string virtualPath, IEnumerable<string> filePaths, IHostingEnvironment hostingEnvironment, IEnumerable<string> targetEnvironments = null)
 		{
 			if (virtualPath == null)
 			{
@@ -43,11 +57,12 @@ namespace LibFree.AspNet.Mvc.Bundle.Core.Bundles
 				throw new ArgumentException("filePaths cannot be empty");
 			}
 
-			RequestedVirtualPath = virtualPath;
+			_requestedVirtualPath = virtualPath;
 			_filePaths = filePaths;
 			_hostingEnvironment = hostingEnvironment;
+			_targetEnvironments = targetEnvironments;
 
-			GenerateVirtualPath();
+			_generatedVirtualPath = _requestedVirtualPath + "?v=" + Guid.NewGuid().ToString().Replace("-", string.Empty);
 		}
 
 		public async Task<string> GetContent()
@@ -104,10 +119,43 @@ namespace LibFree.AspNet.Mvc.Bundle.Core.Bundles
 		}
 
 		protected abstract string Minify(string filePath, string content);
+		protected abstract string BuildHtmlLink(string path);
 
-		private void GenerateVirtualPath()
+		public string GetLHtmlTags()
 		{
-			GeneratedVirtualPath = RequestedVirtualPath + "?v=" + Guid.NewGuid().ToString().Replace("-", string.Empty);
+			if (_linkCache == null)
+			{
+				lock (_linkCacheLockObject)
+				{
+					if (_linkCache == null)
+					{
+						_linkCache = BuildHtmlLink(_generatedVirtualPath);
+						/*if (_targetEnvironments == null)
+						{
+							_linkCache = BuildHtmlLink(_generatedVirtualPath);
+                        }
+						else
+						{
+							if (_targetEnvironments.Contains(_hostingEnvironment.EnvironmentName))
+							{
+								_linkCache = BuildHtmlLink(_generatedVirtualPath);
+							}
+							else
+							{
+								var stringBuilder = new StringBuilder();
+								foreach (var filePath in _filePaths)
+								{
+									stringBuilder.Append(BuildHtmlLink(filePath)).Append("\r\n");
+								}
+
+								_linkCache = stringBuilder.ToString();
+							}
+						}*/
+					}
+				}
+			}
+
+			return _linkCache;
 		}
 	}
 }

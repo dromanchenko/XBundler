@@ -25,7 +25,7 @@ namespace LibFree.AspNet.Mvc.Bundle.Core.Middlewares
 		private static IApplicationBuilder AddBundle(this IApplicationBuilder app, BundleType bundleType, BundleDesc bundleDesc)
 		{
 			var bundleRuntime = (IBundleRuntime)app.ApplicationServices.GetService(typeof(IBundleRuntime));
-			bundleRuntime.CreateBundle(bundleType, bundleDesc.VirtualPath, bundleDesc.Files, typeof(IApplicationBuilderExtensions).Name);
+			bundleRuntime.CreateBundle(bundleType, bundleDesc.VirtualPath, bundleDesc.Environments,  bundleDesc.Files, typeof(IApplicationBuilderExtensions).Name);
 			return app;
 		}
 	}

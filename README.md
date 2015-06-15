@@ -48,10 +48,10 @@ public void Configure(IApplicationBuilder app)
 {
 	...
 	app.UseBundle()
-		.AddCssBundle(new BundleDesc("/assets/css/")
+		.AddCssBundle(new BundleDesc("/assets/css/", "Production")
 			.AddFile("/assets/css/bootstrap.css")
 			.AddFile("/assets/css/main.css"))
-		.AddJsBundle(new BundleDesc("/assets/js/")
+		.AddJsBundle(new BundleDesc("/assets/js/", "Production")
 			.AddFile("/assets/js/jquery-2.1.3.js")
 			.AddFile("/assets/js/bootstrap.js"));
 	...
@@ -69,12 +69,12 @@ public void Configure(IApplicationBuilder app)
 ### Views
 
 ```html
-<cssbundle virtualpath="/assets/css/">
+<cssbundle virtualpath="/assets/css/" environments="Production">
 	<css href="/assets/css/bootstrap.css"></css>
 	<css href="/assets/css/main.css"></css>
 </cssbundle>
 
-<jsbundle virtualpath="/assets/js/">
+<jsbundle virtualpath="/assets/js/" environments="Production">
 	<script src="/assets/js/jquery-2.1.3.js"></script>
 	<script src="/assets/js/bootstrap.js"></script>
 </jsbundle>

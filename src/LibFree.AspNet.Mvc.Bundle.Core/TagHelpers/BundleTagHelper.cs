@@ -14,6 +14,9 @@ namespace LibFree.AspNet.Mvc.Bundle.Core.TagHelpers
 		[HtmlAttributeName("virtualPath")]
 		public string VirtualPath { get; set; }
 
+		[HtmlAttributeName("environments")]
+		public string TargetEnvironments { get; set; }
+
 		public BundleTagHelper(ILoggerFactory loggerFactory, IBundleRuntime bundleRuntime)
 		{
 			_loggerFactory = loggerFactory;
@@ -23,7 +26,6 @@ namespace LibFree.AspNet.Mvc.Bundle.Core.TagHelpers
 		protected abstract ILogger GetLogger(ILoggerFactory loggerFactory);
 		protected abstract string GetLoggerMessagesPrefix();
 		protected abstract IEnumerable<string> ParseHtml(string content);
-		protected abstract void SetContent(TagHelperOutput output, Bundles.Bundle bundle);
 		protected abstract BundleType GetBundleType();
 
 		public override async Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
@@ -31,8 +33,6 @@ namespace LibFree.AspNet.Mvc.Bundle.Core.TagHelpers
 			var logger = GetLogger(_loggerFactory);
 			var loggerMessagesPrefix = GetLoggerMessagesPrefix();
 			logger.LogVerbose("{0}: running", loggerMessagesPrefix);
-
-			output.SuppressOutput();
 
 			Bundles.Bundle bundle;
 			if (_bundleRuntime.Bundles.ContainsKey(VirtualPath))
@@ -43,10 +43,20 @@ namespace LibFree.AspNet.Mvc.Bundle.Core.TagHelpers
 			{
 				var bundleType = GetBundleType();
 				var childContent = await context.GetChildContentAsync();
-				bundle = _bundleRuntime.CreateBundle(bundleType, VirtualPath, ParseHtml(childContent.GetContent()), loggerMessagesPrefix);
+				bundle = _bundleRuntime.CreateBundle(bundleType, VirtualPath, TargetEnvironments, ParseHtml(childContent.GetContent()), loggerMessagesPrefix);
 			}
 
-			SetContent(output, bundle);
+			output.SuppressOutput();
+
+			if (bundle.ShouldBundle)
+			{
+				output.Content.SetContent(bundle.GetLHtmlTags());
+			}
+			else
+			{
+				var childContent = await context.GetChildContentAsync();
+				output.Content.SetContent(childContent);
+			}
 		}
 	}
 }

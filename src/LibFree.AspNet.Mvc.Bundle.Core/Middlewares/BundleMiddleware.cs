@@ -14,12 +14,14 @@ namespace LibFree.AspNet.Mvc.Bundle.Core.Middlewares
 		private ILogger _logger;
 		private IBundleRuntime _bundleRuntime;
 
-		public BundleMiddleware(RequestDelegate next, ILoggerFactory loggerFactory, IBundleRuntime bundleRuntime)
+		public BundleMiddleware(RequestDelegate next,
+			ILoggerFactory loggerFactory,
+			IBundleRuntime bundleRuntime)
 		{
 			_next = next;
 			_logger = loggerFactory.CreateLogger<BundleMiddleware>();
 			_bundleRuntime = bundleRuntime;
-		}
+        }
 
 		public async Task Invoke(HttpContext context)
 		{

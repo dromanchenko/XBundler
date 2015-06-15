@@ -11,7 +11,7 @@ namespace LibFree.AspNet.Mvc.Bundle.HtmlParsers
 		{
 			var htmlDocument = new HtmlDocument();
 			htmlDocument.LoadHtml(html);
-			var cssNodes = htmlDocument.DocumentNode.SelectNodes("//css");
+			var cssNodes = htmlDocument.DocumentNode.SelectNodes("//link");
 			return cssNodes.Select(n => n.Attributes["href"].Value).ToArray();
 		}
 
