@@ -70,8 +70,8 @@ public void Configure(IApplicationBuilder app)
 
 ```html
 <cssbundle virtualpath="/assets/css/" environments="Production">
-	<css href="/assets/css/bootstrap.css"></css>
-	<css href="/assets/css/main.css"></css>
+	<link rel="stylesheet" href="/assets/css/bootstrap.css">
+	<link rel="stylesheet" href="/assets/css/main.css">
 </cssbundle>
 
 <jsbundle virtualpath="/assets/js/" environments="Production">
