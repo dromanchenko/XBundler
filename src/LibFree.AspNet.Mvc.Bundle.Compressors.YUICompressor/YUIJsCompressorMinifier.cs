@@ -5,10 +5,10 @@ namespace LibFree.AspNet.Mvc.Bundle.Compressors
 {
 	public sealed class YUIJsCompressorMinifier : IJsMinifier
 	{
-		public string Minify(string css)
+		public string Minify(string js)
 		{
 			var jsComperssor = new JavaScriptCompressor();
-			return jsComperssor.Compress(css);
+			return jsComperssor.Compress(js);
 		}
 	}
 }
