@@ -2,6 +2,6 @@
 {
 	public interface IJsMinifier
     {
-		string Minify(string css);
+		string Minify(string js);
     }
 }
