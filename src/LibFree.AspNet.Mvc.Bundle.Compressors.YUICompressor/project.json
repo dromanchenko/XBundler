@@ -1,28 +1,28 @@
 ﻿{
-	"version": "1.0.0-beta6",
-	"description": "",
-	"authors": [ "" ],
-	"tags": [ "" ],
-	"projectUrl": "",
-	"licenseUrl": "",
+  "version": "1.0.0-beta6",
+  "description": "",
+  "authors": [ "" ],
+  "tags": [ "" ],
+  "projectUrl": "",
+  "licenseUrl": "",
 
-	"dependencies":
-	{
-		"Microsoft.Framework.DependencyInjection.Abstractions": "1.0.0-*",
-		"YUICompressor.NET": "2.7.0.0",
-		"LibFree.AspNet.Mvc.Bundle.Core": ""
-	},
+  "dependencies":
+  {
+    "Microsoft.Framework.DependencyInjection.Abstractions": "1.0.0-*",
+    "LibFree.AspNet.Mvc.Bundle.Core": "",
+    "YUICompressor.NET": "2.7.0"
+  },
 
-	"frameworks":
-	{
-		"dnx451": { }
-	},
-	"publishExclude":
-	[
-		".nuget"
-	],
-	"exclude":
-	[
-		".nuget"
-	]
+  "frameworks":
+  {
+    "dnx451": { }
+  },
+  "publishExclude":
+  [
+    ".nuget"
+  ],
+  "exclude":
+  [
+    ".nuget"
+  ]
 }
