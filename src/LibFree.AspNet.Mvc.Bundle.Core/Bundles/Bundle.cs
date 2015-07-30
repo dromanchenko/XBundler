@@ -107,7 +107,7 @@ namespace LibFree.AspNet.Mvc.Bundle.Core.Bundles
 				var physicalPath = Path.Combine(_hostingEnvironment.WebRootPath, normalizedFilePath);
 				string fileContent;
 				using (var fileStream = File.OpenRead(physicalPath))
-				using (var streamReader = new StreamReader(fileStream))
+				using (var streamReader = new StreamReader(fileStream, Encoding.UTF8))
 				{
 					fileContent = await streamReader.ReadToEndAsync();
 				}

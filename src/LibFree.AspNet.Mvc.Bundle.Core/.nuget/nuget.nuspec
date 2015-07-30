@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>LibFree.AspNet.Mvc.Bundle.Core</id>
-    <version>1.0.0-beta6</version>
+    <version>1.0.0-beta7</version>
 		<title>LibFree.AspNet.Mvc.Bundle.Core</title>
     <authors>Dmitry Romanchenko</authors>
     <owners>Dmitry Romanchenko</owners>
@@ -14,9 +14,9 @@
     <copyright>Copyright 2015</copyright>
     <dependencies>
       <group targetFramework="DNX4.5.1">
-        <dependency id="Microsoft.AspNet.Razor.Runtime" version="4.0.0-beta6-11557" />
+        <dependency id="Microsoft.AspNet.Razor.Runtime" version="4.0.0-beta6" />
         <dependency id="Microsoft.AspNet.Mvc.Core" version="6.0.0-beta6-14104" />
-				<dependency id="Microsoft.Framework.Logging.Abstractions" version="1.0.0-beta6-11466" />
+				<dependency id="Microsoft.Framework.Logging.Abstractions" version="1.0.0-beta6" />
       </group>
     </dependencies>
     <frameworkAssemblies>

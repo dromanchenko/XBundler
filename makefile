@@ -1,12 +1,12 @@
-COREPATH=src/LibFree.AspNet.Mvc.Bundle.Core/
+COREPATH=src/LibFree.AspNet.Mvc.Bundle.Core
 COREPACKDNUPATH=artifacts/nuget/LibFree.AspNet.Mvc.Bundle.Core/
 COREPACKPATH=artifacts/nuget/LibFree.AspNet.Mvc.Bundle.Core/Release/
 
-HTMLAGILIITPACK_PATH=src/LibFree.AspNet.Mvc.Bundle.HtmlParsers.HtmlAgilityPack/
+HTMLAGILIITPACK_PATH=src/LibFree.AspNet.Mvc.Bundle.HtmlParsers.HtmlAgilityPack
 HTMLAGILIITPACK_DNUPATH=artifacts/nuget/LibFree.AspNet.Mvc.Bundle.HtmlParsers.HtmlAgilityPack/
 HTMLAGILIITPACK_PACKPATH=artifacts/nuget/LibFree.AspNet.Mvc.Bundle.HtmlParsers.HtmlAgilityPack/Release/
 
-YUICOMPRESSOR_PATH=src/LibFree.AspNet.Mvc.Bundle.Compressors.YUICompressor/
+YUICOMPRESSOR_PATH=src/LibFree.AspNet.Mvc.Bundle.Compressors.YUICompressor
 YUICOMPRESSOR_DNUPATH=artifacts/nuget/LibFree.AspNet.Mvc.Bundle.Compressors.YUICompressor/
 YUICOMPRESSOR_PACKPATH=artifacts/nuget/LibFree.AspNet.Mvc.Bundle.Compressors.YUICompressor/Release/
 
@@ -19,7 +19,7 @@ nuget-core:
 	rm -f $(COREPACKPATH)*.nupkg
 	mkdir $(COREPACKPATH)lib
 	mv $(COREPACKPATH)dnx451 $(COREPACKPATH)lib/dnx451
-	cp -p $(COREPATH).nuget/nuget.nuspec $(COREPACKPATH)
+	cp -p $(COREPATH)/.nuget/nuget.nuspec $(COREPACKPATH)
 	nuget pack $(COREPACKPATH)nuget.nuspec -OutputDirectory $(COREPACKPATH)
 
 nuget-htmlparser:
@@ -29,7 +29,7 @@ nuget-htmlparser:
 	rm -f $(HTMLAGILIITPACK_PACKPATH)*.nupkg
 	mkdir $(HTMLAGILIITPACK_PACKPATH)lib
 	mv $(HTMLAGILIITPACK_PACKPATH)dnx451 $(HTMLAGILIITPACK_PACKPATH)lib/dnx451
-	cp -p $(HTMLAGILIITPACK_PATH).nuget/nuget.nuspec $(HTMLAGILIITPACK_PACKPATH)
+	cp -p $(HTMLAGILIITPACK_PATH)/.nuget/nuget.nuspec $(HTMLAGILIITPACK_PACKPATH)
 	nuget pack $(HTMLAGILIITPACK_PACKPATH)nuget.nuspec -OutputDirectory $(HTMLAGILIITPACK_PACKPATH)
 
 nuget-yuicompressor:
@@ -39,5 +39,5 @@ nuget-yuicompressor:
 	rm -f $(YUICOMPRESSOR_PACKPATH)*.nupkg
 	mkdir $(YUICOMPRESSOR_PACKPATH)lib
 	mv $(YUICOMPRESSOR_PACKPATH)dnx451 $(YUICOMPRESSOR_PACKPATH)lib/dnx451
-	cp -p $(YUICOMPRESSOR_PATH).nuget/nuget.nuspec $(YUICOMPRESSOR_PACKPATH)
+	cp -p $(YUICOMPRESSOR_PATH)/.nuget/nuget.nuspec $(YUICOMPRESSOR_PACKPATH)
 	nuget pack $(YUICOMPRESSOR_PACKPATH)nuget.nuspec -OutputDirectory $(YUICOMPRESSOR_PACKPATH)

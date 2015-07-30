@@ -39,11 +39,11 @@ namespace LibFree.AspNet.Mvc.Bundle.Core.Middlewares
 				string content;
 				if (bundle is CssBundle)
 				{
-					context.Response.ContentType = "text/css";
+					context.Response.ContentType = "text/css; charset=utf-8";
 				}
 				else if (bundle is JsBundle)
 				{
-					context.Response.ContentType = "application/x-javascript";
+					context.Response.ContentType = "application/javascript; charset=utf-8";
 				}
 				else
 				{

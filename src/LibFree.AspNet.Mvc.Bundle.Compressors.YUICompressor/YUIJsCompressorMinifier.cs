@@ -1,4 +1,5 @@
 ﻿using LibFree.AspNet.Mvc.Bundle.Core.Abstractions;
+using System.Text;
 using Yahoo.Yui.Compressor;
 
 namespace LibFree.AspNet.Mvc.Bundle.Compressors
@@ -7,7 +8,11 @@ namespace LibFree.AspNet.Mvc.Bundle.Compressors
 	{
 		public string Minify(string js)
 		{
-			var jsComperssor = new JavaScriptCompressor();
+			var jsComperssor = new JavaScriptCompressor()
+			{
+				Encoding = Encoding.UTF8
+			};
+
 			return jsComperssor.Compress(js);
 		}
 	}
