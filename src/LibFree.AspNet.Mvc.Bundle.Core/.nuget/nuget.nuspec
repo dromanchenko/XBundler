@@ -15,7 +15,7 @@
     <dependencies>
       <group targetFramework="DNX4.5.1">
         <dependency id="Microsoft.AspNet.Razor.Runtime" version="4.0.0-beta6" />
-        <dependency id="Microsoft.AspNet.Mvc.Core" version="6.0.0-beta6-14104" />
+        <dependency id="Microsoft.AspNet.Mvc.Core" version="6.0.0-beta6" />
 				<dependency id="Microsoft.Framework.Logging.Abstractions" version="1.0.0-beta6" />
       </group>
     </dependencies>
