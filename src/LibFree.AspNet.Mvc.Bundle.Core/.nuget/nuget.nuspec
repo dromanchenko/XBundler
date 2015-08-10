@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>LibFree.AspNet.Mvc.Bundle.Core</id>
-    <version>1.0.0-beta7</version>
+    <version>1.0.0-beta8</version>
 		<title>LibFree.AspNet.Mvc.Bundle.Core</title>
     <authors>Dmitry Romanchenko</authors>
     <owners>Dmitry Romanchenko</owners>

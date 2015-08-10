@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>LibFree.AspNet.Mvc.Bundle.HtmlParsers.HtmlAgilityPack</id>
-    <version>1.0.0-beta7</version>
+    <version>1.0.0-beta8</version>
 		<title>LibFree.AspNet.Mvc.Bundle.HtmlParsers.HtmlAgilityPack</title>
     <authors>Dmitry Romanchenko</authors>
     <owners>Dmitry Romanchenko</owners>
@@ -16,7 +16,7 @@
       <group targetFramework="DNX4.5.1">
 				<dependency id="Microsoft.Framework.Logging.Abstractions" version="1.0.0-beta6" />
 				<dependency id="HtmlAgilityPack" version="1.4.9" />
-				<dependency id="LibFree.AspNet.Mvc.Bundle.Core" version="1.0.0-beta7" />
+				<dependency id="LibFree.AspNet.Mvc.Bundle.Core" version="1.0.0-beta8" />
       </group>
     </dependencies>
     <frameworkAssemblies>
