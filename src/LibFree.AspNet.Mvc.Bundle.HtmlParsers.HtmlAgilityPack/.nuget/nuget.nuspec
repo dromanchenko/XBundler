@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>LibFree.AspNet.Mvc.Bundle.HtmlParsers.HtmlAgilityPack</id>
-    <version>1.0.0-beta8</version>
+    <version>1.0.0-beta9</version>
 		<title>LibFree.AspNet.Mvc.Bundle.HtmlParsers.HtmlAgilityPack</title>
     <authors>Dmitry Romanchenko</authors>
     <owners>Dmitry Romanchenko</owners>
@@ -13,17 +13,17 @@
     <releaseNotes>Initial Realease.</releaseNotes>
     <copyright>Copyright 2015</copyright>
     <dependencies>
-      <group targetFramework="DNX4.5.1">
-				<dependency id="Microsoft.Framework.Logging.Abstractions" version="1.0.0-beta6" />
+      <group targetFramework="DNX4.6">
+				<dependency id="Microsoft.Framework.Logging.Abstractions" version="1.0.0-beta7" />
 				<dependency id="HtmlAgilityPack" version="1.4.9" />
-				<dependency id="LibFree.AspNet.Mvc.Bundle.Core" version="1.0.0-beta8" />
+				<dependency id="LibFree.AspNet.Mvc.Bundle.Core" version="1.0.0-beta9" />
       </group>
     </dependencies>
     <frameworkAssemblies>
-      <frameworkAssembly assemblyName="mscorlib" targetFramework="DNX4.5.1" />
-      <frameworkAssembly assemblyName="System" targetFramework="DNX4.5.1" />
-      <frameworkAssembly assemblyName="System.Core" targetFramework="DNX4.5.1" />
-      <frameworkAssembly assemblyName="Microsoft.CSharp" targetFramework="DNX4.5.1" />
+      <frameworkAssembly assemblyName="mscorlib" targetFramework="DNX4.6" />
+      <frameworkAssembly assemblyName="System" targetFramework="DNX4.6" />
+      <frameworkAssembly assemblyName="System.Core" targetFramework="DNX4.6" />
+      <frameworkAssembly assemblyName="Microsoft.CSharp" targetFramework="DNX4.6" />
     </frameworkAssemblies>
   </metadata>
 </package>

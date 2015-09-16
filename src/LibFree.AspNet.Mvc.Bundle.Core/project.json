@@ -1,5 +1,5 @@
 {
-	"version": "1.0.0-beta7",
+	"version": "1.0.0-beta9",
 	"description": "",
 	"authors":
 	[
@@ -13,13 +13,13 @@
 	"licenseUrl": "",
 	"dependencies":
 	{
-		"Microsoft.AspNet.Razor.Runtime": "4.0.0-beta6",
-		"Microsoft.AspNet.Mvc.Core": "6.0.0-beta6",
-		"Microsoft.Framework.Logging.Abstractions": "1.0.0-beta6"
+		"Microsoft.AspNet.Razor.Runtime": "4.0.0-beta7",
+		"Microsoft.AspNet.Mvc.Core": "6.0.0-beta7",
+		"Microsoft.Framework.Logging.Abstractions": "1.0.0-beta7"
 	},
 	"frameworks":
 	{
-		"dnx451": { }
+		"dnx46": { }
 	},
 	"publishExclude":
 	[
