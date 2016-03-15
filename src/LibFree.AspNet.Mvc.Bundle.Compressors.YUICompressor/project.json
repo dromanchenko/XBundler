@@ -1,17 +1,17 @@
 ﻿{
-  "version": "1.0.0-beta9",
+  "version": "1.0.0-rc1",
   "description": "",
   "authors": [ "" ],
   "tags": [ "" ],
   "projectUrl": "",
   "licenseUrl": "",
 
-  "dependencies":
-  {
-    "Microsoft.Framework.DependencyInjection.Abstractions": "1.0.0-beta7",
-    "LibFree.AspNet.Mvc.Bundle.Core": "",
-    "YUICompressor.NET": "2.7.0"
-  },
+	"dependencies":
+	{
+		"LibFree.AspNet.Mvc.Bundle.Core": "",
+		"Microsoft.Extensions.DependencyInjection.Abstractions": "1.0.0-rc1-final",
+		"YUICompressor.NET": "2.7.0"
+	},
 
   "frameworks":
   {

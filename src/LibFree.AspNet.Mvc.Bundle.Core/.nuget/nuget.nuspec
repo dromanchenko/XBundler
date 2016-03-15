@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>LibFree.AspNet.Mvc.Bundle.Core</id>
-    <version>1.0.0-beta9</version>
+    <version>1.0.0-rc1</version>
 		<title>LibFree.AspNet.Mvc.Bundle.Core</title>
     <authors>Dmitry Romanchenko</authors>
     <owners>Dmitry Romanchenko</owners>
@@ -14,10 +14,11 @@
     <copyright>Copyright 2015</copyright>
     <dependencies>
       <group targetFramework="DNX4.6">
-        <dependency id="Microsoft.AspNet.Razor.Runtime" version="4.0.0-beta7" />
-        <dependency id="Microsoft.AspNet.Mvc.Core" version="6.0.0-beta7" />
-				<dependency id="Microsoft.Framework.Logging.Abstractions" version="1.0.0-beta7" />
-      </group>
+        <dependency id="Microsoft.AspNet.Hosting.Abstractions" version="1.0.0-rc1-final" />
+        <dependency id="Microsoft.AspNet.Razor.Runtime" version="4.0.0-rc1-final" />
+				<dependency id="Microsoft.Extensions.DependencyInjection.Abstractions" version="1.0.0-rc1-final" />
+				<dependency id="Microsoft.Extensions.Logging.Abstractions" version="1.0.0-rc1-final" />
+			</group>
     </dependencies>
     <frameworkAssemblies>
       <frameworkAssembly assemblyName="mscorlib" targetFramework="DNX4.6" />

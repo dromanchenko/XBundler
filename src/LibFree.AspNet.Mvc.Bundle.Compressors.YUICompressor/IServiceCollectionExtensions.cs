@@ -1,5 +1,5 @@
 ﻿using LibFree.AspNet.Mvc.Bundle.Core.Abstractions;
-using Microsoft.Framework.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace LibFree.AspNet.Mvc.Bundle.Compressors
 {

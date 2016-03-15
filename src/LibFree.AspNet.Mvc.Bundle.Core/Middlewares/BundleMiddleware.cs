@@ -2,7 +2,7 @@
 using LibFree.AspNet.Mvc.Bundle.Core.Bundles;
 using Microsoft.AspNet.Builder;
 using Microsoft.AspNet.Http;
-using Microsoft.Framework.Logging;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Threading.Tasks;
 

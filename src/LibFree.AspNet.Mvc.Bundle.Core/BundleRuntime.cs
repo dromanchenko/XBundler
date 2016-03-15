@@ -1,10 +1,10 @@
 ﻿using LibFree.AspNet.Mvc.Bundle.Core.Abstractions;
 using LibFree.AspNet.Mvc.Bundle.Core.Bundles;
-using Microsoft.AspNet.Hosting;
-using Microsoft.Framework.Logging;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using Microsoft.AspNet.Hosting;
 
 namespace LibFree.AspNet.Mvc.Bundle.Core
 {

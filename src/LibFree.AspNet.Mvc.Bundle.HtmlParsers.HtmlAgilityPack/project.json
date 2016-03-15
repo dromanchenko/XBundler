@@ -1,5 +1,5 @@
 ﻿{
-	"version": "1.0.0-beta9",
+	"version": "1.0.0-rc1",
 	"description": "",
 	"authors": [ "" ],
 	"tags": [ "" ],
@@ -8,9 +8,9 @@
 
 	"dependencies":
 	{
-		"Microsoft.Framework.DependencyInjection.Abstractions": "1.0.0-beta7",
 		"HtmlAgilityPack": "1.4.9",
-		"LibFree.AspNet.Mvc.Bundle.Core": ""
+		"LibFree.AspNet.Mvc.Bundle.Core": "",
+		"Microsoft.Extensions.DependencyInjection.Abstractions": "1.0.0-rc1-final"
 	},
 
 	"frameworks":

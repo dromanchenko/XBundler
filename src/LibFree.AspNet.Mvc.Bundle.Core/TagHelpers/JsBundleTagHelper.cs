@@ -1,11 +1,11 @@
 ﻿using LibFree.AspNet.Mvc.Bundle.Core.Abstractions;
-using Microsoft.AspNet.Razor.Runtime.TagHelpers;
-using Microsoft.Framework.Logging;
+using Microsoft.AspNet.Razor.TagHelpers;
+using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 
 namespace LibFree.AspNet.Mvc.Bundle.Core.TagHelpers
 {
-	[TargetElement("jsbundle")]
+	[HtmlTargetElement("jsbundle")]
 	public sealed class JsBundleTagHelper : BundleTagHelper
 	{
 		private IHtmlParser _htmlParser;

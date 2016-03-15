@@ -1,6 +1,6 @@
 ﻿using LibFree.AspNet.Mvc.Bundle.Core.Abstractions;
-using Microsoft.AspNet.Razor.Runtime.TagHelpers;
-using Microsoft.Framework.Logging;
+using Microsoft.AspNet.Razor.TagHelpers;
+using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -42,7 +42,7 @@ namespace LibFree.AspNet.Mvc.Bundle.Core.TagHelpers
 			else
 			{
 				var bundleType = GetBundleType();
-				var childContent = await context.GetChildContentAsync();
+				var childContent = await output.GetChildContentAsync();
 				bundle = _bundleRuntime.CreateBundle(bundleType, VirtualPath, TargetEnvironments, ParseHtml(childContent.GetContent()), loggerMessagesPrefix);
 			}
 
@@ -50,11 +50,11 @@ namespace LibFree.AspNet.Mvc.Bundle.Core.TagHelpers
 
 			if (bundle.ShouldBundle)
 			{
-				output.Content.SetContent(bundle.GetLHtmlTags());
+				output.Content.SetHtmlContent(bundle.GetLHtmlTags());
 			}
 			else
 			{
-				var childContent = await context.GetChildContentAsync();
+				var childContent = await output.GetChildContentAsync();
 				output.Content.SetContent(childContent);
 			}
 		}
