@@ -1,5 +1,5 @@
 ﻿using LibFree.AspNet.Mvc.Bundle.Core.Abstractions;
-using Microsoft.AspNet.Razor.TagHelpers;
+using Microsoft.AspNetCore.Razor.TagHelpers;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -32,7 +32,7 @@ namespace LibFree.AspNet.Mvc.Bundle.Core.TagHelpers
 		{
 			var logger = GetLogger(_loggerFactory);
 			var loggerMessagesPrefix = GetLoggerMessagesPrefix();
-			logger.LogVerbose("{0}: running", loggerMessagesPrefix);
+			logger.LogDebug("{0}: running", loggerMessagesPrefix);
 
 			Bundles.Bundle bundle;
 			if (_bundleRuntime.Bundles.ContainsKey(VirtualPath))
@@ -54,8 +54,8 @@ namespace LibFree.AspNet.Mvc.Bundle.Core.TagHelpers
 			}
 			else
 			{
-				var childContent = await output.GetChildContentAsync();
-				output.Content.SetContent(childContent);
+				var childContent = (await output.GetChildContentAsync()).GetContent();
+				output.Content.SetHtmlContent(childContent);
 			}
 		}
 	}

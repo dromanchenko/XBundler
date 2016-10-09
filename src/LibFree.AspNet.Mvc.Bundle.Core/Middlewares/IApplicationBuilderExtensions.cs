@@ -1,5 +1,5 @@
 ﻿using LibFree.AspNet.Mvc.Bundle.Core.Abstractions;
-using Microsoft.AspNet.Builder;
+using Microsoft.AspNetCore.Builder;
 
 namespace LibFree.AspNet.Mvc.Bundle.Core.Middlewares
 {

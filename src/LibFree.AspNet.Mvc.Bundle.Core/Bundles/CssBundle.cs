@@ -1,7 +1,6 @@
 ﻿using LibFree.AspNet.Mvc.Bundle.Core.Abstractions;
-using Microsoft.AspNet.Hosting;
 using System.Collections.Generic;
-using System;
+using Microsoft.AspNetCore.Hosting;
 
 namespace LibFree.AspNet.Mvc.Bundle.Core.Bundles
 {

@@ -1,28 +1,22 @@
 ﻿{
-  "version": "1.0.0-rc1",
-  "description": "",
-  "authors": [ "" ],
-  "tags": [ "" ],
-  "projectUrl": "",
-  "licenseUrl": "",
-
+	"version": "1.0.0",
 	"dependencies":
 	{
-		"LibFree.AspNet.Mvc.Bundle.Core": "",
-		"Microsoft.Extensions.DependencyInjection.Abstractions": "1.0.0-rc1-final",
+		"LibFree.AspNet.Mvc.Bundle.Core": "1.0.0",
 		"YUICompressor.NET": "2.7.0"
 	},
 
-  "frameworks":
-  {
-    "dnx46": { }
-  },
-  "publishExclude":
-  [
-    ".nuget"
-  ],
-  "exclude":
-  [
-    ".nuget"
-  ]
+	"frameworks":
+	{
+		"net461":
+		{
+		}
+	},
+	"publishOptions":
+	{
+		"exclude":
+		[
+			".nuget"
+		]
+	}
 }

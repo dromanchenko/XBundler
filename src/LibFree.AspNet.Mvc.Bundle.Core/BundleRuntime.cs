@@ -4,7 +4,7 @@ using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using Microsoft.AspNet.Hosting;
+using Microsoft.AspNetCore.Hosting;
 
 namespace LibFree.AspNet.Mvc.Bundle.Core
 {
@@ -46,7 +46,7 @@ namespace LibFree.AspNet.Mvc.Bundle.Core
 			Bundles.Bundle bundle;
 			if (_bundles.ContainsKey(virtualPath))
 			{
-				_logger.LogVerbose("{0}: 1st round check - bundle {1} already exists. Using it", loggerMessagesPrefix, virtualPath);
+				_logger.LogDebug("{0}: 1st round check - bundle {1} already exists. Using it", loggerMessagesPrefix, virtualPath);
 				bundle = _bundles[virtualPath];
 			}
 			else
@@ -55,14 +55,14 @@ namespace LibFree.AspNet.Mvc.Bundle.Core
 				{
 					if (_bundles.ContainsKey(virtualPath))
 					{
-						_logger.LogVerbose("{0}: 2nd round check - bundle {1} already exists. Using it", loggerMessagesPrefix, virtualPath);
+						_logger.LogDebug("{0}: 2nd round check - bundle {1} already exists. Using it", loggerMessagesPrefix, virtualPath);
 						bundle = _bundles[virtualPath];
 					}
 					else
 					{
 						try
 						{
-							_logger.LogVerbose("{0}: bundle {1} doesn't exist. Creating it", loggerMessagesPrefix, virtualPath);
+							_logger.LogDebug("{0}: bundle {1} doesn't exist. Creating it", loggerMessagesPrefix, virtualPath);
 							bundle = CreateBundle(bundleType, virtualPath, targetEnvironments, filePaths);
 							_bundles.Add(virtualPath, bundle);
 						}

@@ -1,7 +1,7 @@
 ﻿using LibFree.AspNet.Mvc.Bundle.Core.Abstractions;
-using Microsoft.AspNet.Razor.TagHelpers;
-using System.Collections.Generic;
+using Microsoft.AspNetCore.Razor.TagHelpers;
 using Microsoft.Extensions.Logging;
+using System.Collections.Generic;
 
 namespace LibFree.AspNet.Mvc.Bundle.Core.TagHelpers
 {

@@ -1,33 +1,22 @@
 {
-	"version": "1.0.0-rc1",
-	"description": "",
-	"authors":
-	[
-		""
-	],
-	"tags":
-	[
-		""
-	],
-	"projectUrl": "",
-	"licenseUrl": "",
+	"version": "1.0.0",
 	"dependencies":
 	{
-		"Microsoft.AspNet.Hosting.Abstractions": "1.0.0-rc1-final",
-		"Microsoft.AspNet.Razor.Runtime": "4.0.0-rc1-final",
-		"Microsoft.Extensions.DependencyInjection.Abstractions": "1.0.0-rc1-final",
-		"Microsoft.Extensions.Logging.Abstractions": "1.0.0-rc1-final"
+		"Microsoft.AspNetCore.Hosting.Abstractions": "1.0.0",
+		"Microsoft.AspNetCore.Razor.Runtime": "1.0.0",
+		"Microsoft.Extensions.Logging.Abstractions": "1.0.0"
 	},
 	"frameworks":
 	{
-		"dnx46": { }
+		"net461":
+		{
+		}
 	},
-	"publishExclude":
-	[
-		".nuget"
-	],
-	"exclude":
-	[
-		".nuget"
-	]
+	"publishOptions":
+	{
+			"exclude":
+			[
+				".nuget"
+			]
+	}
 }

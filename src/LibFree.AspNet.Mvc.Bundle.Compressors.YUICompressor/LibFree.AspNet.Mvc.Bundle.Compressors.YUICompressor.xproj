@@ -9,7 +9,7 @@
     <ProjectGuid>2d17911d-677b-4154-a162-eed1e09b5dc1</ProjectGuid>
     <RootNamespace>LibFree.AspNet.Mvc.Bundle.Compressors.YUICompressor</RootNamespace>
     <BaseIntermediateOutputPath Condition="'$(BaseIntermediateOutputPath)'=='' ">..\..\artifacts\obj\$(MSBuildProjectName)</BaseIntermediateOutputPath>
-    <OutputPath Condition="'$(OutputPath)'=='' ">..\..\artifacts\bin\$(MSBuildProjectName)\</OutputPath>
+    <OutputPath Condition="'$(OutputPath)'=='' ">.\bin\</OutputPath>
   </PropertyGroup>
   <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <AssemblyName>LibFree.AspNet.Mvc.Bundle.Compressors.YUICompressor</AssemblyName>

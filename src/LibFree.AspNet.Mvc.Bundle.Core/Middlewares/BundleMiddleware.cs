@@ -1,7 +1,6 @@
 ﻿using LibFree.AspNet.Mvc.Bundle.Core.Abstractions;
 using LibFree.AspNet.Mvc.Bundle.Core.Bundles;
-using Microsoft.AspNet.Builder;
-using Microsoft.AspNet.Http;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Threading.Tasks;
@@ -25,7 +24,7 @@ namespace LibFree.AspNet.Mvc.Bundle.Core.Middlewares
 
 		public async Task Invoke(HttpContext context)
 		{
-			_logger.LogVerbose("BundleMiddleware: running");
+			_logger.LogDebug("BundleMiddleware: running");
 
 			var requestPath = context.Request.Path.Value;
 			var requestPathWithoutQueryString = requestPath.Contains("?")
@@ -33,7 +32,7 @@ namespace LibFree.AspNet.Mvc.Bundle.Core.Middlewares
 				: requestPath;
 			if (_bundleRuntime.Bundles.ContainsKey(requestPathWithoutQueryString))
 			{
-				_logger.LogVerbose("BundleMiddleware: request path {0} matches one of the bundles", requestPath);
+				_logger.LogDebug("BundleMiddleware: request path {0} matches one of the bundles", requestPath);
 
 				var bundle = _bundleRuntime.Bundles[requestPathWithoutQueryString];
 				string content;

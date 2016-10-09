@@ -9,7 +9,7 @@
     <ProjectGuid>f54b3c3b-f41a-4efc-be82-f94507a552fd</ProjectGuid>
     <RootNamespace>LibFree.AspNet.Mvc.Bundle.Core</RootNamespace>
     <BaseIntermediateOutputPath Condition="'$(BaseIntermediateOutputPath)'=='' ">..\..\artifacts\obj\$(MSBuildProjectName)</BaseIntermediateOutputPath>
-    <OutputPath Condition="'$(OutputPath)'=='' ">..\..\artifacts\bin\$(MSBuildProjectName)\</OutputPath>
+    <OutputPath Condition="'$(OutputPath)'=='' ">.\bin\</OutputPath>
   </PropertyGroup>
   <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <AssemblyName>LibFree.AspNet.Mvc.Bundle.Core</AssemblyName>
