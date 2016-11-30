@@ -2,8 +2,8 @@
 	"version": "1.0.0",
 	"dependencies":
 	{
-		"LibFree.AspNet.Mvc.Bundle.Core": "1.0.0",
-		"YUICompressor.NET": "2.7.0"
+		"XBundler.Core": "1.0.0",
+		"NUglify": "1.5.3"
 	},
 
 	"frameworks":

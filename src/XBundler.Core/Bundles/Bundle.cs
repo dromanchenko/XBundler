@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace LibFree.AspNet.Mvc.Bundle.Core.Bundles
+namespace XBundler.Core.Bundles
 {
 	public abstract class Bundle
 	{
@@ -67,30 +67,23 @@ namespace LibFree.AspNet.Mvc.Bundle.Core.Bundles
 
 		public async Task<string> GetContent()
 		{
-			if (_content != null)
+			if (_content == null)
 			{
-				return _content;
-			}
-			else
-			{
-				if (_content != null)
+				await _contentSyncLock.WaitAsync();
+				try
 				{
-					return _content;
-				}
-				else
-				{
-					await _contentSyncLock.WaitAsync();
-					try
+					if (_content == null)
 					{
 						_content = await BuildContentAsync();
-						return _content;
-					}
-					finally
-					{
-						_contentSyncLock.Release();
 					}
 				}
+				finally
+				{
+					_contentSyncLock.Release();
+				}
 			}
+
+			return _content;
 		}
 
 		protected virtual async Task<string> BuildContentAsync()
@@ -130,27 +123,6 @@ namespace LibFree.AspNet.Mvc.Bundle.Core.Bundles
 					if (_linkCache == null)
 					{
 						_linkCache = BuildHtmlLink(_generatedVirtualPath);
-						/*if (_targetEnvironments == null)
-						{
-							_linkCache = BuildHtmlLink(_generatedVirtualPath);
-                        }
-						else
-						{
-							if (_targetEnvironments.Contains(_hostingEnvironment.EnvironmentName))
-							{
-								_linkCache = BuildHtmlLink(_generatedVirtualPath);
-							}
-							else
-							{
-								var stringBuilder = new StringBuilder();
-								foreach (var filePath in _filePaths)
-								{
-									stringBuilder.Append(BuildHtmlLink(filePath)).Append("\r\n");
-								}
-
-								_linkCache = stringBuilder.ToString();
-							}
-						}*/
 					}
 				}
 			}

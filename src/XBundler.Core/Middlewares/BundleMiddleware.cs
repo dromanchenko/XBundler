@@ -1,11 +1,11 @@
-﻿using LibFree.AspNet.Mvc.Bundle.Core.Abstractions;
-using LibFree.AspNet.Mvc.Bundle.Core.Bundles;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
+using XBundler.Core.Abstractions;
+using XBundler.Core.Bundles;
 using System;
 using System.Threading.Tasks;
 
-namespace LibFree.AspNet.Mvc.Bundle.Core.Middlewares
+namespace XBundler.Core.Middlewares
 {
 	public sealed class BundleMiddleware
     {

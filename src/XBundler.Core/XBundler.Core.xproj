@@ -6,13 +6,13 @@
   </PropertyGroup>
   <Import Project="$(VSToolsPath)\DNX\Microsoft.DNX.Props" Condition="'$(VSToolsPath)' != ''" />
   <PropertyGroup Label="Globals">
-    <ProjectGuid>1eb392f1-6ae1-4531-b3dc-3430ca6d32bd</ProjectGuid>
-    <RootNamespace>LibFree.AspNet.Mvc.Bundle.HtmlParsers.HtmlAgilityPack</RootNamespace>
+    <ProjectGuid>f54b3c3b-f41a-4efc-be82-f94507a552fd</ProjectGuid>
+    <RootNamespace>XBundler.Core</RootNamespace>
     <BaseIntermediateOutputPath Condition="'$(BaseIntermediateOutputPath)'=='' ">..\..\artifacts\obj\$(MSBuildProjectName)</BaseIntermediateOutputPath>
     <OutputPath Condition="'$(OutputPath)'=='' ">.\bin\</OutputPath>
   </PropertyGroup>
   <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <AssemblyName>LibFree.AspNet.Mvc.Bundle.HtmlParsers.HtmlAgilityPack</AssemblyName>
+    <AssemblyName>LibFree.AspNet.Mvc.Bundle.Core</AssemblyName>
   </PropertyGroup>
   <PropertyGroup>
     <SchemaVersion>2.0</SchemaVersion>

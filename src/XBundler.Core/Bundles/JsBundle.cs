@@ -1,8 +1,8 @@
-﻿using LibFree.AspNet.Mvc.Bundle.Core.Abstractions;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Hosting;
+using XBundler.Core.Abstractions;
 
-namespace LibFree.AspNet.Mvc.Bundle.Core.Bundles
+namespace XBundler.Core.Bundles
 {
 	public sealed class JsBundle : Bundle
     {

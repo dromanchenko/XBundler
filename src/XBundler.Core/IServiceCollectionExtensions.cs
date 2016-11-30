@@ -1,7 +1,7 @@
-﻿using LibFree.AspNet.Mvc.Bundle.Core.Abstractions;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
+using XBundler.Core.Abstractions;
 
-namespace LibFree.AspNet.Mvc.Bundle.Core
+namespace XBundler.Core
 {
 	public static class IServiceCollectionExtensions
     {

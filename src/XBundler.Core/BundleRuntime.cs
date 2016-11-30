@@ -1,12 +1,12 @@
-﻿using LibFree.AspNet.Mvc.Bundle.Core.Abstractions;
-using LibFree.AspNet.Mvc.Bundle.Core.Bundles;
+﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Logging;
+using XBundler.Core.Abstractions;
+using XBundler.Core.Bundles;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using Microsoft.AspNetCore.Hosting;
 
-namespace LibFree.AspNet.Mvc.Bundle.Core
+namespace XBundler.Core
 {
 	internal sealed class BundleRuntime : IBundleRuntime
     {

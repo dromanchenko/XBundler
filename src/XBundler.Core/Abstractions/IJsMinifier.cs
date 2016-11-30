@@ -1,4 +1,4 @@
-﻿namespace LibFree.AspNet.Mvc.Bundle.Core.Abstractions
+﻿namespace XBundler.Core.Abstractions
 {
 	public interface IJsMinifier
     {

@@ -1,10 +1,10 @@
-﻿using LibFree.AspNet.Mvc.Bundle.Core.Abstractions;
-using Microsoft.AspNetCore.Razor.TagHelpers;
+﻿using Microsoft.AspNetCore.Razor.TagHelpers;
 using Microsoft.Extensions.Logging;
+using XBundler.Core.Abstractions;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace LibFree.AspNet.Mvc.Bundle.Core.TagHelpers
+namespace XBundler.Core.TagHelpers
 {
 	public abstract class BundleTagHelper : TagHelper
 	{

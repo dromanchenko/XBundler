@@ -1,19 +1,19 @@
-﻿using LibFree.AspNet.Mvc.Bundle.Core.Abstractions;
-using Microsoft.AspNetCore.Razor.TagHelpers;
+﻿using Microsoft.AspNetCore.Razor.TagHelpers;
 using Microsoft.Extensions.Logging;
+using XBundler.Core.Abstractions;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
-namespace LibFree.AspNet.Mvc.Bundle.Core.TagHelpers
+namespace XBundler.Core.TagHelpers
 {
 	[HtmlTargetElement("cssbundle")]
 	public sealed class CssBundleTagHelper : BundleTagHelper
 	{
-		private IHtmlParser _htmlParser;
+		private static readonly Regex _regExp = new Regex("href\\s*=\\s*('|\")(?<path>.*?)('|\")");
 
-		public CssBundleTagHelper(IHtmlParser htmlParser, ILoggerFactory loggerFactory, IBundleRuntime bundleRuntime)
+		public CssBundleTagHelper(ILoggerFactory loggerFactory, IBundleRuntime bundleRuntime)
 			: base(loggerFactory, bundleRuntime)
 		{
-			_htmlParser = htmlParser;
 		}
 
 		protected override ILogger GetLogger(ILoggerFactory loggerFactory)
@@ -28,7 +28,13 @@ namespace LibFree.AspNet.Mvc.Bundle.Core.TagHelpers
 
 		protected override IEnumerable<string> ParseHtml(string content)
 		{
-			return _htmlParser.ParseCssBundle(content);
+			var matches = _regExp.Matches(content);
+			var paths = new List<string>(matches.Count);
+			foreach (Match match in matches)
+			{
+				paths.Add(match.Groups["path"].Value);
+			}
+			return paths;
 		}
 
 		protected override BundleType GetBundleType()
