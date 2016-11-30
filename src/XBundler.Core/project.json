@@ -8,8 +8,16 @@
 	},
 	"frameworks":
 	{
-		"net461":
+		"net451":
 		{
+		},
+		"netstandard1.6":
+		{
+			"imports": "dnxcore50",
+			"dependencies":
+			{
+				"NETStandard.Library": "1.6.0"
+			}
 		}
 	},
 	"publishOptions":
