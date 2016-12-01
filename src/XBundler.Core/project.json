@@ -1,5 +1,11 @@
 {
-	"version": "1.0.0",
+	"title": "XBundler.Core",
+	"description": "A library to bundle (minify/concat) css and js for Asp.Net Core",
+	"version": "1.0.1",
+	"authors":
+	[
+		"Dmitry Romanchenko"
+	],
 	"dependencies":
 	{
 		"Microsoft.AspNetCore.Hosting.Abstractions": "1.0.0",
@@ -20,11 +26,14 @@
 			}
 		}
 	},
-	"publishOptions":
+	"packOptions":
 	{
-			"exclude":
-			[
-				".nuget"
-			]
+		"summary": "A library to bundle (minify/concat) css and js for Asp.Net Core",
+		"projectUrl": "https://github.com/dromanchenko/XBundler",
+		"licenseUrl": "https://github.com/dromanchenko/XBundler/blob/master/LICENSE",
+		"owners":
+		[
+			"Dmitry Romanchenko"
+		]
 	}
 }

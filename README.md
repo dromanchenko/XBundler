@@ -1,21 +1,19 @@
-# LibFree.AspNet.Mvc.Bundle
-A library to bundle (minify/concat) css and js for Asp.Net Mvc 6
+# XBundler
+A library to bundle (minify/concat) css and js for Asp.Net Core
 
 ### Installation
 In nuget console:
 
-    Install-Package LibFree.AspNet.Mvc.Bundle.Core -Pre
-    Install-Package LibFree.AspNet.Mvc.Bundle.HtmlParsers.HtmlAgilityPack -Pre
-    Install-Package LibFree.AspNet.Mvc.Bundle.Compressors.YUICompressor -Pre
+    Install-Package Install-Package XBundler.Core
+    Install-Package XBundler.NUglify
 
 ### Startup.cs
 
 ```csharp
 
-using LibFree.AspNet.Mvc.Bundle.Compressors;
-using LibFree.AspNet.Mvc.Bundle.Core;
-using LibFree.AspNet.Mvc.Bundle.Core.Middlewares;
-using LibFree.AspNet.Mvc.Bundle.HtmlParsers;
+using XBundler.Core;
+using XBundler.NUglify;
+using XBundler.Middlewares;
 ```
 
 ```csharp
@@ -24,8 +22,7 @@ public void ConfigureServices(IServiceCollection services)
 {
     ...
 	services.AddBundle();
-    services.AddYUICompressor();
-	services.AddHtmlAgilityPackParser();
+	ervices.AddNUglifyMinifier();
 	...
 }
 ```
@@ -62,7 +59,7 @@ public void Configure(IApplicationBuilder app)
 
 ```
 ...
-@addTagHelper "*, LibFree.AspNet.Mvc.Bundle.Core"
+@addTagHelper "*, XBundler.Core"
 ...
 ```
 

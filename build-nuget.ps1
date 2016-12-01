@@ -1,4 +1,4 @@
-Remove-Item artifacts\nuget\* -Recurse -ErrorAction SilentlyContinue
+emove-Item artifacts\nuget\* -Recurse -ErrorAction SilentlyContinue
 
 $projectNames = "LibFree.AspNet.Mvc.Bundle.Core", "LibFree.AspNet.Mvc.Bundle.Compressors.YUICompressor", "LibFree.AspNet.Mvc.Bundle.HtmlParsers.HtmlAgilityPack"
 

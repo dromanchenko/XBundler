@@ -1,8 +1,14 @@
 ﻿{
-	"version": "1.0.0",
+	"title": "XBundler.Core.NUglify",
+	"description": "An NUglify minifier service for XBundler.Core",
+	"version": "1.0.1",
+	"authors":
+	[
+		"Dmitry Romanchenko"
+	],
 	"dependencies":
 	{
-		"XBundler.Core": "1.0.0",
+		"XBundler.Core": "1.0.1",
 		"NUglify": "1.5.3"
 	},
 
@@ -25,6 +31,16 @@
 		"exclude":
 		[
 			".nuget"
+		]
+	},
+	"packOptions":
+	{
+		"summary": "An NUglify minifier service for XBundler.Core",
+		"projectUrl": "https://github.com/dromanchenko/XBundler",
+		"licenseUrl": "https://github.com/dromanchenko/XBundler/blob/master/LICENSE",
+		"owners":
+		[
+			"Dmitry Romanchenko"
 		]
 	}
 }
