@@ -22,7 +22,7 @@ public void ConfigureServices(IServiceCollection services)
 {
     ...
 	services.AddBundle();
-	ervices.AddNUglifyMinifier();
+	services.AddNUglifyMinifier();
 	...
 }
 ```
