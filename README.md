@@ -4,8 +4,7 @@ A library to bundle (minify/concat) css and js for Asp.Net Core
 ### Installation
 In nuget console:
 
-    Install-Package Install-Package XBundler.Core
-    Install-Package XBundler.NUglify
+    Install-Package XBundler
 
 ### Startup.cs
 

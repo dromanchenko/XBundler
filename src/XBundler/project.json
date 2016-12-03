@@ -1,17 +1,18 @@
-﻿{
-	"title": "XBundler.Core.NUglify",
-	"description": "An NUglify minifier service for XBundler.Core",
-	"version": "1.0.1",
+{
+	"title": "XBundler",
+	"description": "A library to bundle (minify/concat) css and js for Asp.Net Core",
+	"version": "1.0.0",
 	"authors":
 	[
 		"Dmitry Romanchenko"
 	],
 	"dependencies":
 	{
-		"XBundler.Core": "1.0.1",
+		"Microsoft.AspNetCore.Hosting.Abstractions": "1.0.0",
+		"Microsoft.AspNetCore.Razor.Runtime": "1.0.0",
+		"Microsoft.Extensions.Logging.Abstractions": "1.0.0",
 		"NUglify": "1.5.3"
 	},
-
 	"frameworks":
 	{
 		"net451":
@@ -26,16 +27,9 @@
 			}
 		}
 	},
-	"publishOptions":
-	{
-		"exclude":
-		[
-			".nuget"
-		]
-	},
 	"packOptions":
 	{
-		"summary": "An NUglify minifier service for XBundler.Core",
+		"summary": "A library to bundle (minify/concat) css and js for Asp.Net Core",
 		"projectUrl": "https://github.com/dromanchenko/XBundler",
 		"licenseUrl": "https://github.com/dromanchenko/XBundler/blob/master/LICENSE",
 		"owners":
