@@ -9,7 +9,7 @@
     <Product />
     <Description>A library to bundle (minify/concat) css and js for Asp.Net Core</Description>
     <PackageProjectUrl>https://github.com/dromanchenko/XBundler</PackageProjectUrl>
-    <PackageLicenseUrl>https://github.com/dromanchenko/XBundler/blob/master/LICENS</PackageLicenseUrl>
+    <PackageLicenseUrl>https://github.com/dromanchenko/XBundler/blob/master/LICENSE</PackageLicenseUrl>
   </PropertyGroup>
 
   <ItemGroup>
