@@ -30,11 +30,11 @@ namespace XBundler.Core.Middlewares
 			var requestPathWithoutQueryString = requestPath.Contains("?")
 				? requestPath.Remove(requestPath.IndexOf('?'))
 				: requestPath;
-			if (_bundleRuntime.Bundles.ContainsKey(requestPathWithoutQueryString))
+			var bundle = _bundleRuntime.GetBundle(requestPathWithoutQueryString);
+			if (bundle != null)
 			{
 				_logger.LogDebug("BundleMiddleware: request path {0} matches one of the bundles", requestPath);
 
-				var bundle = _bundleRuntime.Bundles[requestPathWithoutQueryString];
 				string content;
 				if (bundle is CssBundle)
 				{

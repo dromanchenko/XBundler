@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Razor.TagHelpers;
 using Microsoft.Extensions.Logging;
-using XBundler.Core.Abstractions;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using XBundler.Core.Abstractions;
 
 namespace XBundler.Core.TagHelpers
 {
@@ -34,12 +34,8 @@ namespace XBundler.Core.TagHelpers
 			var loggerMessagesPrefix = GetLoggerMessagesPrefix();
 			logger.LogDebug("{0}: running", loggerMessagesPrefix);
 
-			Bundles.Bundle bundle;
-			if (_bundleRuntime.Bundles.ContainsKey(VirtualPath))
-			{
-				bundle = _bundleRuntime.Bundles[VirtualPath];
-			}
-			else
+			var bundle = _bundleRuntime.GetBundle(VirtualPath);
+			if (bundle == null)
 			{
 				var bundleType = GetBundleType();
 				var childContent = await output.GetChildContentAsync();
