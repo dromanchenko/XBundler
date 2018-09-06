@@ -1,5 +1,5 @@
 # XBundler
-A library to bundle (minify/concat) css and js for Asp.Net Core
+A in-memory css and js bundler for Asp.Net Core
 
 ### Installation
 In nuget console:
